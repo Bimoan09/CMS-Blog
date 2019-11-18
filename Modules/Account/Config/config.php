@@ -1,5 +1,6 @@
 <?php
 
 return [
-    'name' => 'Account'
+    'name' => 'Account Page',
+    'initial' => 'Example Page'
 ];

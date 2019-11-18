@@ -1,0 +1,13 @@
+{
+    "name": "MasterFrontend",
+    "alias": "masterfrontend",
+    "description": "",
+    "keywords": [],
+    "order": 0,
+    "providers": [
+        "Modules\\MasterFrontend\\Providers\\MasterFrontendServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

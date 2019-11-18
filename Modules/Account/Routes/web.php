@@ -11,6 +11,13 @@
 |
 */
 
+// Route::get('/', function () {
+//     return view('account::login');
+// });
+
 Route::prefix('account')->group(function() {
-    Route::get('/', 'AccountController@index');
+    Route::get('/login', 'AccountController@getLogin')->name('get.login');
+    Route::get('/register', 'AccountController@getRegister')->name('get.register');
+    Route::post('/login', 'AccountController@postLogin')->name('post.login');
+    Route::post('/register', 'AccountController@postRegister')->name('post.register');
 });

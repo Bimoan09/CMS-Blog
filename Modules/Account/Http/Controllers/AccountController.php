@@ -5,6 +5,7 @@ namespace Modules\Account\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use App\User;
 
 class AccountController extends Controller
 {
@@ -12,18 +13,18 @@ class AccountController extends Controller
      * Display a listing of the resource.
      * @return Response
      */
-    public function index()
+    public function getLogin()
     {
-        return view('account::index');
+        return view('account::login');
     }
 
     /**
      * Show the form for creating a new resource.
      * @return Response
      */
-    public function create()
+    public function getregister()
     {
-        return view('account::create');
+        return view('account::register');
     }
 
     /**
@@ -31,9 +32,17 @@ class AccountController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function store(Request $request)
+    public function postLogin(Request $request)
     {
-        //
+        $attempts = [
+            'email' => $request->email,
+            'password'   => $request->password,
+        ];
+
+        if(\Auth::attempt($attempts)){
+            return "username anda" . \Auth::user()->username;
+        }
+        return "password salah";
     }
 
     /**
@@ -41,9 +50,22 @@ class AccountController extends Controller
      * @param int $id
      * @return Response
      */
-    public function show($id)
+    public function postRegister(Request $request)
     {
-        return view('account::show');
+
+        $request->validate([
+            'name' => 'required|min:3|max:50',
+            'email' => 'email',
+            'password' => 'required|confirmed|min:6',
+        ]);
+
+        $create = User::create([
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => bcrypt($request->password),
+        'username' => strtolower(str_replace(' ', '', $request->name)),
+        ]);
+        return "terdaftar";
     }
 
     /**
