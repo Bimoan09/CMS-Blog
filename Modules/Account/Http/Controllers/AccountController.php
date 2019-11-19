@@ -58,12 +58,13 @@ class AccountController extends Controller
             'email' => 'email',
             'password' => 'required|confirmed|min:6',
         ]);
-
+        
+        $unique_username = uniqid();
         $create = User::create([
         'name' => $request->name,
         'email' => $request->email,
         'password' => bcrypt($request->password),
-        'username' => strtolower(str_replace(' ', '', $request->name)),
+        'username' => strtolower(str_replace(' ', '', $request->name . $unique_username)),
         ]);
         return "terdaftar";
     }
