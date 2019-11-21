@@ -1,5 +1,7 @@
 {
     "Account": true,
     "MasterFrontend": true,
-    "News": true
+    "News": true,
+    "Admin": true,
+    "Member": true
 }

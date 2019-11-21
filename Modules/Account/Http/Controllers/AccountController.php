@@ -40,8 +40,13 @@ class AccountController extends Controller
         ];
 
         if(\Auth::attempt($attempts)){
-            return "username anda" . \Auth::user()->username;
+            if(\Auth::user()->user_type == 'superadmin'){
+                return redirect()->route('admin.home');
         }
+            elseif(\Auth::user()->user_type == 'member'){
+                return redirect()->route('member.home');
+        }
+    }
         return "password salah";
     }
 
@@ -58,15 +63,16 @@ class AccountController extends Controller
             'email' => 'email',
             'password' => 'required|confirmed|min:6',
         ]);
-        
+
         $unique_username = uniqid();
         $create = User::create([
         'name' => $request->name,
         'email' => $request->email,
         'password' => bcrypt($request->password),
         'username' => strtolower(str_replace(' ', '', $request->name . $unique_username)),
+        'user_type' => 'superadmin',
         ]);
-        return "terdaftar";
+        return redirect()->route('get.login')->with('success', 'Pendaftaran Berhasil, Silahkan Login disini');
     }
 
     /**

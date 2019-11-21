@@ -1,7 +1,7 @@
   @include('masterfrontend::layouts.main')
   @include('masterfrontend::partials.header')
   @include('masterfrontend::partials.RegisterHeader')
-
+  
   <!-- Sign up -->
   <div class="page-content">
       <div class="container">
