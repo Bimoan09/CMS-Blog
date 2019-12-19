@@ -47,7 +47,7 @@ class AccountController extends Controller
                 return redirect()->route('member.home');
         }
     }
-        return "password salah";
+        return back()->with('failed', 'Password salah, cek kembali');
     }
 
     /**
@@ -63,7 +63,7 @@ class AccountController extends Controller
             'email' => 'email',
             'password' => 'required|confirmed|min:6',
         ]);
-
+        
         $unique_username = uniqid();
         $create = User::create([
         'name' => $request->name,
@@ -101,8 +101,9 @@ class AccountController extends Controller
      * @param int $id
      * @return Response
      */
-    public function destroy($id)
+    public function logout()
     {
-        //
+        \Auth::logout();
+        return redirect()->route('get.login')->with('failed', "udah logout");
     }
 }

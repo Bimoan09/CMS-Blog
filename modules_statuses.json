@@ -3,5 +3,7 @@
     "MasterFrontend": true,
     "News": true,
     "Admin": true,
-    "Member": true
+    "Member": true,
+    "Example": true,
+    "Artikel": true
 }

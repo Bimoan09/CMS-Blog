@@ -1,4 +1,4 @@
-@include('masterfrontend::layouts.main')
+@include('masterfrontend::layouts.mainAccount')
 @include('masterfrontend::partials.header')
 @include('masterfrontend::partials.loginHeader')
 @include('masterfrontend::partials.alert')

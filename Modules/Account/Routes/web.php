@@ -11,13 +11,14 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('account::login');
-// });
+
+Auth::routes();
 
 Route::prefix('account')->group(function() {
     Route::get('/login', 'AccountController@getLogin')->name('get.login');
     Route::get('/register', 'AccountController@getRegister')->name('get.register');
     Route::post('/login', 'AccountController@postLogin')->name('post.login');
     Route::post('/register', 'AccountController@postRegister')->name('post.register');
+    Route::get('/logout', 'AccountController@logout')->name('post.logout');
 });
+
