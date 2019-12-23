@@ -12,16 +12,18 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Member
-Route::group(['prefix' => 'artikel'], function() {
-    Route::get('/member', 'Member\ArtikelController@index')->name('member.artikel.index');
+// Member Artikel
+Route::group(['prefix' => 'member'], function() {
+    Route::get('/artikel/list', 'Member\ArtikelController@index')->name('member.artikel.index');
+    Route::get('/artikel/create', 'Member\ArtikelController@create')->name('member.artikel.create');
 
 });
 
-//Internal Admin
-Route::group(['prefix' => 'artikel'], function() {
-    Route::get('/admin','PesertaDidikController@index')->name('siswa');
 
+//Internal Admin Artikel
+Route::group(['prefix' => 'admin'], function() {
+    Route::get('/artikel/list', 'InternalAdmin\ArtikelController@index')->name('admin.artikel.index');
+    Route::get('/artikel/create', 'InternalAdmin\ArtikelController@create')->name('admin.artikel.create');
 
 
 });

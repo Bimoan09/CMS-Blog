@@ -5,6 +5,8 @@ namespace Modules\Member\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Str;
+use Auth;
 
 class MemberController extends Controller
 {
@@ -21,9 +23,10 @@ class MemberController extends Controller
      * Show the form for creating a new resource.
      * @return Response
      */
-    public function create()
-    {
-        return view('member::create');
+    public function profile($name)
+    {   
+        $name = Str::slug(Auth::user()->name);
+        return view('member::profile.profile', compact('name'));
     }
 
     /**

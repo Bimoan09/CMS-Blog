@@ -14,6 +14,7 @@
 // Route::prefix('member')->group(function() {
 //     Route::get('/', 'MemberController@index');
 // });
-Route::group(['prefix' => 'timeline', 'middleware' => ['auth','MemberType']], function() {
-    Route::get('/member', 'MemberController@index')->name('member.home');
+Route::group(['prefix' => 'member', 'middleware' => ['auth','MemberType']], function() {
+    Route::get('/dashboard', 'MemberController@index')->name('member.home');
+    Route::get('/{name}', 'MemberController@profile')->name('member.profile');
 });

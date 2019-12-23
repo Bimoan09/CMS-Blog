@@ -5,6 +5,8 @@ namespace Modules\Admin\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Str;
+use Auth;
 
 class AdminController extends Controller
 {
@@ -14,16 +16,17 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin::index');
+        return view('admin::timeline.timeline');
     }
 
     /**
      * Show the form for creating a new resource.
      * @return Response
      */
-    public function create()
-    {
-        return view('admin::create');
+    public function profile($name)
+    {   
+        $name = Str::slug(Auth::user()->name);
+        return view('admin::profile.profile', compact('name'));
     }
 
     /**

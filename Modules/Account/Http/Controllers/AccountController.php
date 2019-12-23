@@ -40,7 +40,7 @@ class AccountController extends Controller
         ];
 
         if(\Auth::attempt($attempts)){
-            if(\Auth::user()->user_type == 'superadmin'){
+            if(\Auth::user()->user_type == 'internaladmin'){
                 return redirect()->route('admin.home');
         }
             elseif(\Auth::user()->user_type == 'member'){

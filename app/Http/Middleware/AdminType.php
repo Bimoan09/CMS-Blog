@@ -16,7 +16,7 @@ class AdminType
     public function handle($request, Closure $next)
     {
         $admin = \Auth::user();
-        if($admin->user_type != 'superadmin'){
+        if($admin->user_type != 'internaladmin'){
             return redirect()->back();
         }
         return $next($request);

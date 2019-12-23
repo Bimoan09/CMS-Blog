@@ -23,7 +23,7 @@ class ArtikelController extends Controller
      */
     public function create()
     {
-        return view('artikel::create');
+        return view('artikel::member.create');
     }
 
     /**

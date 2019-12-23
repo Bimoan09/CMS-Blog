@@ -1,0 +1,5 @@
+{
+    "require": {
+        "ckfinder/ckfinder-laravel-package": "v3.5.1.2"
+    }
+}

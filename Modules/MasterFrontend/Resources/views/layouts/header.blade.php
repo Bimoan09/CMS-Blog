@@ -1,7 +1,7 @@
    <!-- Header -->
             <header class="app-layout-header">
                 <nav class="navbar navbar-default">
-                    <div class="container-fluid">
+                    {{-- <div class="container-fluid">
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                                 data-target="#header-navbar-collapse" aria-expanded="false">
@@ -21,9 +21,9 @@
 
                                 Dashboard
                             </span>
-                        </div>
+                        </div> --}}
 
-                        <div class="collapse navbar-collapse" id="header-navbar-collapse">
+                        {{-- <div class="collapse navbar-collapse" id="header-navbar-collapse">
                             <!-- Header search form -->
                             <form class="navbar-form navbar-left app-search-form" role="search">
                                 <div class="form-group">
@@ -36,8 +36,8 @@
                                         </span>
                                     </div>
                                 </div>
-                            </form>
-
+                            </form> --}}
+{{-- 
                             <ul id="main-menu" class="nav navbar-nav navbar-left">
                                 <li class="dropdown">
                                     <a href="#" data-toggle="dropdown">English <span class="caret"></span></a>
@@ -58,7 +58,7 @@
                                     </ul>
                                 </li>
                             </ul>
-                            <!-- .navbar-left -->
+                            <!-- .navbar-left --> --}}
 
                             <ul class="nav navbar-nav navbar-right navbar-toolbar hidden-sm hidden-xs">
                                 <li>
@@ -96,17 +96,23 @@
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-right">
                                         <li class="dropdown-header">
-                                            Pages
+                                            Halaman
                                         </li>
+                                        @if(Auth::user()->user_type == 'member')
                                         <li>
-                                            <a href="base_pages_profile.html">Profile</a>
+                                            <a href="{{route('member.profile', \Str::slug(Auth::user()->name))}}">Profile </a>
                                         </li>
+                                        @elseif(Auth::user()->user_type == 'internaladmin')
                                         <li>
+                                           <a href="{{route('admin.profile', \Str::slug(Auth::user()->name))}}">Profile </a>
+                                        </li>
+                                         @endif
+                                        {{-- <li>
                                             <a href="base_pages_profile.html"><span
                                                     class="badge badge-success pull-right">3</span> Blog</a>
-                                        </li>
+                                        </li> --}}
                                         <li>
-                                            <a href="{{route('post.logout')}}">Logout</a>
+                                            <a href="{{route('post.logout')}}">Keluar</a>
                                         </li>
                                     </ul>
                                 </li>

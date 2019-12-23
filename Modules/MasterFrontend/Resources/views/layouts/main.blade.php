@@ -10,7 +10,7 @@
             <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 
             <!-- Document title -->
-            <title>CMS - Login </title>
+            <title>@yield('title')</title>
 
             <meta name="description" content="AppUI - Frontend Template & UI Framework" />
             <meta name="robots" content="noindex, nofollow" />
@@ -64,8 +64,13 @@
         <script src="{{asset('assets/js/app-custom.js') }}"></script>
         <script src="{{asset('assets/js/pages/index.js') }}"></script>
 
-    <script src="{{ asset('assets/vendor/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+        <script src="{{ asset('assets/vendor/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ asset('assets/vendor/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+        <script src="{{ asset('assets/ckeditor/ckeditor.js') }}"></script>
+
+        <script type="text/javascript" src="{{asset('/js/ckfinder/ckfinder.js')}}"></script>
+        <script>CKFinder.config( { connectorPath: '/ckfinder/connector' } );</script>
+  
 
 
 
