@@ -17,7 +17,7 @@ class AdminType
     {
         $admin = \Auth::user();
         if($admin->user_type != 'internaladmin'){
-            return redirect()->back();
+            return redirect()->back()->with('danger', 'Anda tidak punya akses');
         }
         return $next($request);
     }
