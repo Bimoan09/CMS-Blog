@@ -5,15 +5,29 @@ namespace Modules\Artikel\Http\Controllers\Member;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Modules\Artikel\Repositories\ArtikelRepository;
+use Modules\Artikel\Entities\Article;
 
 class ArtikelController extends Controller
 {
+
+    protected $model;
+
+
+    public function __construct(Article $article)
+    {
+        // set the model
+        $this->article = new ArtikelRepository($article);
+    }
+
     /**
      * Display a listing of the resource.
      * @return Response
      */
     public function index()
     {
+        $article = $this->article->all();
+        dd($article);
         return view('artikel::member.index');
     }
 
