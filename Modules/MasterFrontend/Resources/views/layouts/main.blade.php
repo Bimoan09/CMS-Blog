@@ -44,6 +44,7 @@
             <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
             <link href="{{asset('assets/remark/assets/examples/css/pages/login.css')}}" rel="stylesheet"
             id="css-ionicons" type="text/css" />
+            <link rel="stylesheet" href="{{asset('assets/remark/assets/vendor/select2/select2.css')}}">
             <!-- End Remark template -->
 
 
@@ -84,9 +85,10 @@
 
         @yield('javascript')
 
+        <script src="{{asset('assets/remark/global/vendor/jquery/jquery.js')}}"></script>
         <script src="{{asset('assets/remark/global/vendor/babel-external-helpers/babel-external-helpers.js')}}">
         </script>
-        <script src="{{asset('assets/remark/global/vendor/jquery/jquery.js')}}"></script>
+
         <script src="{{asset('assets/remark/global/vendor/popper-js/umd/popper.min.js')}}"></script>
         <script src="{{asset('assets/remark/global/vendor/bootstrap/bootstrap.js')}}"></script>
         <script src="{{asset('assets/remark/global/vendor/animsition/animsition.js')}}"></script>
@@ -110,8 +112,11 @@
 
         <script src="{{asset('assets/remark/assets/js/Site.js')}}"></script>
         <script src="{{asset('assets/remark/assets/examples/js/dashboard/v1.js')}}"></script>
-
-
+        <script src="{{asset('assets/remark/assets/vendor/formvalidation/formValidation.min.js')}}"></script>
+        <script src="{{asset('assets/remark/assets/vendor/formvalidation/framework/bootstrap4.min.js')}}"></script>
+        <script src="{{asset('assets/remark/assets/examples/js/forms/validation.js')}}"></script>
+        <script src="{{asset('assets/remark/assets/vendor/select2/select2.full.min.js')}}"></script>
+        
         <!-- Datatables -->
         <script src="{{asset('assets/remark/global/vendor/datatables.net/jquery.dataTables.js')}}"></script>
         <script src="{{asset('assets/remark/global/vendor/datatables.net-bs4/dataTables.bootstrap4.js')}}"></script>

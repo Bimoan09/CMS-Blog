@@ -26,8 +26,7 @@ class ArtikelController extends Controller
      */
     public function index()
     {
-        $article = $this->article->all();
-        dd($article);
+        
         return view('artikel::member.index');
     }
 

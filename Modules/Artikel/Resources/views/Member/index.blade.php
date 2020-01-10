@@ -2,16 +2,16 @@
 
 @section('title', 'List Artikel')
 
-@section('content')
 
+@section('content')
 <body class="animsition site-navbar-small ">
-    <!-- Page -->
+<!-- Page -->
     <div class="page">
         <div class="page-header">
             <h1 class="page-title">DataTables</h1>
             <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{route('member.home')}}">Home</a></li>
-                <li class="breadcrumb-item active">Daftar Artikel</li>
+            <li class="breadcrumb-item"><a href="{{route('member.home')}}">Beranda</a></li>
+                <li class="breadcrumb-item active">Artikel</li>
             </ol>
             <div class="page-header-actions">
                 <a class="btn btn-sm btn-primary btn-round" href="http://datatables.net" target="_blank">
@@ -452,10 +452,5 @@
         </div>
     </div>
     <!-- End Page -->
-
-
-
 </body>
-
-</html>
 @endsection

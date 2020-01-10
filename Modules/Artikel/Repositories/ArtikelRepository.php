@@ -8,7 +8,7 @@ use Modules\Artikel\Entities\Article;
 
 interface RepositoryInterface
 {
-    public function all();
+    public function get();
 
     public function create(array $data);
 
@@ -17,6 +17,8 @@ interface RepositoryInterface
     public function delete($id);
 
     public function show($id);
+
+    public function select($field);
 }
 
 
@@ -32,9 +34,9 @@ class ArtikelRepository implements RepositoryInterface
     }
 
     // Get all instances of model
-    public function all()
+    public function get()
     {
-        return $this->article->all();
+        return $this->article->get();
     }
 
     // create a new record in the database
@@ -79,5 +81,11 @@ class ArtikelRepository implements RepositoryInterface
     public function with($relations)
     {
         return $this->article->with($relations);
+    }
+
+    public function select($field)
+    {
+        
+        return $this->article->select('tittle', 'content');
     }
 }
