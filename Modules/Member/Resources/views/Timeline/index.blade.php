@@ -1,6 +1,6 @@
 @extends('masterfrontend::layouts.main')
 
-@section('title', 'Timeline Page')
+@section('title', 'Beranda')
 
 @section('content')
 

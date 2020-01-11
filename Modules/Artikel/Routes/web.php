@@ -16,6 +16,8 @@
 Route::group(['prefix' => 'member'], function() {
     Route::get('/artikel/list', 'Member\ArtikelController@index')->name('member.artikel.index');
     Route::get('/artikel/create', 'Member\ArtikelController@create')->name('member.artikel.create');
+    Route::get('/artikel/detail/1', 'Member\ArtikelController@show')->name('member.artikel.show');
+    Route::get('/artikel/edit/1', 'Member\ArtikelController@edit')->name('member.artikel.edit');
 
 });
 

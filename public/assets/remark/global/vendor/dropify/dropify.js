@@ -46,9 +46,9 @@ function Dropify(element, options) {
         allowedFormats: ['portrait', 'square', 'landscape'],
         allowedFileExtensions: ['*'],
         messages: {
-            'default': 'Drag and drop a file here or click',
-            'replace': 'Drag and drop or click to replace',
-            'remove':  'Remove',
+            'default': 'Geser atau upload gambar disini',
+            'replace': 'Geser atau upload gambar disini untuk menimpa',
+            'remove':  'Hapus',
             'error':   'Ooops, something wrong happended.'
         },
         error: {

@@ -18,7 +18,7 @@ interface RepositoryInterface
 
     public function show($id);
 
-    public function select($field);
+    public function select(array $field);
 }
 
 
@@ -83,9 +83,9 @@ class ArtikelRepository implements RepositoryInterface
         return $this->article->with($relations);
     }
 
-    public function select($field)
+    public function select(array $field)
     {
         
-        return $this->article->select('tittle', 'content');
+        return $this->article->select($field);
     }
 }
