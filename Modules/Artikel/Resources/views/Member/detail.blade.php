@@ -7,276 +7,85 @@
 <body class="animsition site-navbar-small dashboard">
     <!-- Page -->
     <div class="page">
-        <div class="page-content container-fluid">
-            <div class="row" data-plugin="matchHeight" data-by-row="true">
-                <div class="col-xl-3 col-md-6">
-                    <!-- Widget Linearea One-->
-                    <div class="card card-shadow" id="widgetLineareaOne">
-                        <div class="card-block p-20 pt-10">
-                            <div class="clearfix">
-                                <div class="grey-800 float-left py-10">
-                                    <i
-                                        class="icon md-account grey-600 font-size-24 vertical-align-bottom mr-5"></i>Total
-                                    Artikel
-                                </div>
-                                <span class="float-right grey-700 font-size-30">1,253</span>
-                            </div>
-                            <div class="mb-20 grey-500">
-                                <i class="icon md-long-arrow-up green-500 font-size-16"></i>12
-                            </div>
-                            <div class="ct-chart h-50"></div>
-                        </div>
-                    </div>
-                    <!-- End Widget Linearea One -->
-                </div>
-                <div class="col-xl-3 col-md-6">
-                    <!-- Widget Linearea Two -->
-                    <div class="card card-shadow" id="widgetLineareaTwo">
-                        <div class="card-block p-20 pt-10">
-                            <div class="clearfix">
-                                <div class="grey-800 float-left py-10">
-                                    <i
-                                        class="icon md-flash grey-600 font-size-24 vertical-align-bottom mr-5"></i>Artikel
-                                    Disetujui
-                                </div>
-                                <span class="float-right grey-700 font-size-30">2,425</span>
-                            </div>
-                            <div class="mb-20 grey-500">
-                                <i class="icon md-long-arrow-up green-500 font-size-16"></i>2
-                            </div>
-                            <div class="ct-chart h-50"></div>
-                        </div>
-                    </div>
-                    <!-- End Widget Linearea Two -->
-                </div>
-                <div class="col-xl-3 col-md-6">
-                    <!-- Widget Linearea Three -->
-                    <div class="card card-shadow" id="widgetLineareaThree">
-                        <div class="card-block p-20 pt-10">
-                            <div class="clearfix">
-                                <div class="grey-800 float-left py-10">
-                                    <i
-                                        class="icon md-chart grey-600 font-size-24 vertical-align-bottom mr-5"></i>Artikel
-                                    Ditolak
-                                </div>
-                                <span class="float-right grey-700 font-size-30">1,864</span>
-                            </div>
-                            <div class="mb-20 grey-500">
-                                <i class="icon md-long-arrow-down red-500 font-size-16"></i>2
-                            </div>
-                            <div class="ct-chart h-50"></div>
-                        </div>
-                    </div>
-                    <!-- End Widget Linearea Three -->
-                </div>
-                <div class="col-xl-3 col-md-6">
-                    <!-- Widget Linearea Four -->
-                    <div class="card card-shadow" id="widgetLineareaFour">
-                        <div class="card-block p-20 pt-10">
-                            <div class="clearfix">
-                                <div class="grey-800 float-left py-10">
-                                    <i
-                                        class="icon md-view-list grey-600 font-size-24 vertical-align-bottom mr-5"></i>Pendapatan
-                                </div>
-                                <span class="float-right grey-700 font-size-30">845.000</span>
-                            </div>
-                            <div class="mb-20 grey-500">
-                                <i class="icon md-long-arrow-up green-500 font-size-16"></i>1
-                            </div>
-                            <div class="ct-chart h-50"></div>
-                        </div>
-                    </div>
-                    <!-- End Widget Linearea Four -->
-                </div>
+        <div class="page-header">
+            <table class="table table-hover" id="table">
+                <thead>
+                    <tr>
+                        <th>Kategori</th>
+                        <th>Judul</th>
+                        <th>Penulis</th>
+                        <th>Status</th>
 
-                <div class="col-xxl-5 col-lg-6">
-                    <!-- Panel Projects -->
-                    <div class="panel" id="projects">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Projects</h3>
-                        </div>
-                        <div class="table-responsive">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <td>Projects</td>
-                                        <td>Completed</td>
-                                        <td>Date</td>
-                                        <td>Actions</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>The sun climbing plan</td>
-                                        <td>
-                                            <span data-plugin="peityPie" data-skin="red">7/10</span>
-                                        </td>
-                                        <td>Jan 1, 2017</td>
-                                        <td>
-                                            <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
-                                                data-toggle="tooltip" data-original-title="Edit">
-                                                <i class="icon md-wrench" aria-hidden="true"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
-                                                data-toggle="tooltip" data-original-title="Delete">
-                                                <i class="icon md-close" aria-hidden="true"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Lunar probe project</td>
-                                        <td>
-                                            <span data-plugin="peityPie" data-skin="blue">3/10</span>
-                                        </td>
-                                        <td>Feb 12, 2017</td>
-                                        <td>
-                                            <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
-                                                data-toggle="tooltip" data-original-title="Edit">
-                                                <i class="icon md-wrench" aria-hidden="true"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
-                                                data-toggle="tooltip" data-original-title="Delete">
-                                                <i class="icon md-close" aria-hidden="true"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Dream successful plan</td>
-                                        <td>
-                                            <span data-plugin="peityPie" data-skin="green">9/10</span>
-                                        </td>
-                                        <td>Apr 9, 2017</td>
-                                        <td>
-                                            <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
-                                                data-toggle="tooltip" data-original-title="Edit">
-                                                <i class="icon md-wrench" aria-hidden="true"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
-                                                data-toggle="tooltip" data-original-title="Delete">
-                                                <i class="icon md-close" aria-hidden="true"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Office automatization</td>
-                                        <td>
-                                            <span data-plugin="peityPie" data-skin="orange">5/10</span>
-                                        </td>
-                                        <td>May 15, 2017</td>
-                                        <td>
-                                            <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
-                                                data-toggle="tooltip" data-original-title="Edit">
-                                                <i class="icon md-wrench" aria-hidden="true"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
-                                                data-toggle="tooltip" data-original-title="Delete">
-                                                <i class="icon md-close" aria-hidden="true"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Open strategy</td>
-                                        <td>
-                                            <span data-plugin="peityPie" data-skin="brown">2/10</span>
-                                        </td>
-                                        <td>Jun 2, 2017</td>
-                                        <td>
-                                            <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
-                                                data-toggle="tooltip" data-original-title="Edit">
-                                                <i class="icon md-wrench" aria-hidden="true"></i>
-                                            </button>
-                                            <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
-                                                data-toggle="tooltip" data-original-title="Delete">
-                                                <i class="icon md-close" aria-hidden="true"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <!-- End Panel Projects -->
-                </div>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Programming</td>
+                        <td>Belajar Laravel</td>
+                        <td>Abdullah</td>
+                        <td> <span class="badge badge-warning">Review</span></td>
+                    </tr>
+            </table>
+        </div>
+        <div class="page-content">
+            <div class="documents-wrap article">
+                <div class="article-content">
+                    <section>
+                        <center>
+                            <h4>Lorem ipsum</h4>
+                        </center>
+                    </section>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis cursus orci, nec convallis
+                        turpis. Sed volutpat mi eget metus euismod aliquet. Morbi aliquet molestie felis, id porta lacus
+                        commodo ac. Nunc a lobortis lectus, a pretium quam. Vestibulum bibendum convallis mi, sed
+                        pulvinar massa ullamcorper non. Aliquam erat volutpat. Nam molestie arcu eros, vel semper massa
+                        vestibulum lacinia. Ut et turpis tortor. Donec orci eros, dapibus sed vehicula quis, pharetra
+                        imperdiet urna.
 
-                <div class="col-xxl-7 col-lg-6">
-                    <!-- Panel Projects Status -->
-                    <div class="panel" id="projects-status">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">
-                                Projects Status
-                                <span class="badge badge-pill badge-info">5</span>
-                            </h3>
-                        </div>
-                        <div class="table-responsive">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <td>ID</td>
-                                        <td>Project</td>
-                                        <td>Status</td>
-                                        <td class="text-left">Progress</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>619</td>
-                                        <td>The sun climbing plan</td>
-                                        <td>
-                                            <span class="badge badge-primary">Developing</span>
-                                        </td>
-                                        <td>
-                                            <span data-plugin="peityLine">5,3,2,-1,-3,-2,2,3,5,2</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>620</td>
-                                        <td>Lunar probe project</td>
-                                        <td>
-                                            <span class="badge badge-warning">Design</span>
-                                        </td>
-                                        <td>
-                                            <span data-plugin="peityLine">1,-1,0,2,3,1,-1,1,4,2</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>621</td>
-                                        <td>Dream successful plan</td>
-                                        <td>
-                                            <span class="badge badge-info">Testing</span>
-                                        </td>
-                                        <td>
-                                            <span data-plugin="peityLine">2,3,-1,-3,-1,0,2,4,5,3</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>622</td>
-                                        <td>Office automatization</td>
-                                        <td>
-                                            <span class="badge badge-danger">Canceled</span>
-                                        </td>
-                                        <td>
-                                            <span data-plugin="peityLine">1,-2,0,2,4,5,3,2,4,2</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>623</td>
-                                        <td>Open strategy</td>
-                                        <td>
-                                            <span class="badge badge-default">Reply waiting</span>
-                                        </td>
-                                        <td>
-                                            <span data-plugin="peityLine">4,2,-1,-3,-2,1,3,5,2,4</span>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <!-- End Panel Projects Stats -->
-                </div>
+                        Quisque euismod fringilla dui, non cursus sapien maximus quis. Praesent mauris ex, pharetra id
+                        massa eget, pellentesque rutrum orci. Nullam ut nunc et tellus tincidunt consequat in finibus
+                        lorem. Ut porttitor purus vel maximus porta. Proin vel laoreet nunc. Curabitur eu blandit
+                        mauris. Vivamus sit amet volutpat magna, et consequat elit. Vestibulum tincidunt faucibus enim
+                        in ultricies. Integer suscipit, nisl ut eleifend mollis, lectus nunc ultrices ex, quis egestas
+                        ex sem sit amet sem. Quisque tristique semper nulla. Nullam nec tincidunt neque. Morbi lacinia
+                        libero non molestie laoreet.
 
+                        Morbi ullamcorper sapien vitae lectus efficitur, ac congue ipsum egestas. Cras vehicula eget
+                        justo quis sodales. Sed et massa tristique, lobortis elit sit amet, aliquam tortor. Pellentesque
+                        porttitor, urna at rhoncus laoreet, magna neque consectetur nulla, nec commodo arcu nunc et
+                        nisi. Maecenas consectetur, nisl ut mollis molestie, nulla sapien consequat augue, nec posuere
+                        magna velit blandit ante. Cras sagittis velit consequat augue mollis posuere. Quisque magna
+                        turpis, sollicitudin ut ultrices sit amet, gravida a dolor. Nullam faucibus nunc nec massa
+                        aliquet, et elementum magna ultrices. Proin sit amet sagittis turpis, in dapibus arcu. Nunc
+                        volutpat et nunc vitae laoreet.
+
+                        Donec suscipit tempor augue, non malesuada nunc pretium quis. Ut pulvinar sapien vel est varius,
+                        eget sagittis orci tincidunt. Vivamus luctus convallis nibh, id placerat lorem faucibus non.
+                        Curabitur felis nulla, mattis eu tincidunt ultrices, lacinia nec felis. Quisque non eleifend
+                        lacus, a efficitur tellus. Sed lobortis bibendum ipsum, ac fringilla nisi posuere at. Curabitur
+                        maximus dui risus, vel finibus tortor accumsan quis. Donec malesuada dolor non varius tempus.
+                        Nulla rhoncus neque arcu, ac luctus mi faucibus in. Mauris id dictum orci, eu posuere nisl.
+
+                        Morbi vel magna fermentum arcu malesuada rutrum vitae non elit. Praesent vulputate hendrerit
+                        metus. Praesent id pellentesque nisi. Fusce fermentum velit non ante efficitur dictum. Aliquam
+                        fringilla, mi sit amet consequat dapibus, nisl nisi convallis eros, quis commodo nibh libero
+                        dignissim nisi. Praesent egestas nibh nibh, et lobortis nibh convallis eget. Ut felis nisi,
+                        sagittis convallis luctus a, eleifend ac nisi. Quisque efficitur quam lacus, id condimentum ante
+                        egestas in. Sed et imperdiet justo, sed venenatis velit. Mauris id eros nec ligula lacinia
+                        fermentum vitae in metus. Aliquam congue, nisl non posuere placerat, diam orci luctus justo, ac
+                        molestie odio sapien eget eros. Sed finibus, magna eu molestie euismod, ipsum felis mollis
+                        dolor, eget finibus lorem massa sit amet nunc. In in arcu nisl. Suspendisse nunc massa, bibendum
+                        a dui suscipit, condimentum dignissim turpis. Duis vitae efficitur ligula.
+                    </p>
+                    </section>
+                </div>
             </div>
         </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-success btn-block btn-round"><i class="icon wb-menu" aria-hidden="true"></i>Terbitkan Artikel</button>
+        </div>
+        <br>
     </div>
     <!-- End Page -->
 

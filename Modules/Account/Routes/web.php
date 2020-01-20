@@ -22,3 +22,5 @@ Route::prefix('account')->group(function() {
     Route::get('/logout', 'AccountController@logout')->name('post.logout');
 });
 
+
+

@@ -15,6 +15,10 @@ class AccountController extends Controller
      */
     public function getLogin()
     {
+        $AuthenticatedUser = \Auth::user();
+        if($AuthenticatedUser){
+            return back();
+        }
         return view('account::login');
     }
 

@@ -47,6 +47,8 @@
             <link rel="stylesheet" href="{{asset('assets/remark/assets/vendor/select2/select2.css')}}">
             <link rel="stylesheet" href="{{asset('assets/remark/global/vendor/blueimp-file-upload/jquery.fileupload.css')}}">
             <link rel="stylesheet" href="{{asset('assets/remark/global/vendor/dropify/dropify.css')}}">
+            <link rel="stylesheet" href="{{asset('assets/remark/assets/examples/css/apps/documents.css')}}">
+            <link rel="stylesheet" href="{{asset('assets/remark/global/vendor/waves/waves.css')}}">
             <!-- End Remark template -->
 
 
@@ -118,8 +120,10 @@
         <script src="{{asset('assets/remark/assets/vendor/formvalidation/framework/bootstrap4.min.js')}}"></script>
         <script src="{{asset('assets/remark/assets/examples/js/forms/validation.js')}}"></script>
         <script src="{{asset('assets/remark/assets/vendor/select2/select2.full.min.js')}}"></script>
-        //<script src="{{asset('assets/remark/global/vendor/blueimp-file-upload/jquery.fileupload-ui.js')}}"></script>
+        <script src="{{asset('assets/remark/global/vendor/blueimp-file-upload/jquery.fileupload-ui.js')}}"></script>
         <script src="{{asset('assets/remark/global/vendor/dropify/dropify.min.js')}}"></script>
+        <script src="{{asset('assets/remark/global/vendor/bootstrap-select/bootstrap-select.js')}}"></script>
+        <script src="{{asset('assets/remark/global/vendor/waves/waves.js')}}"></script>
         
         <!-- Datatables -->
         <script src="{{asset('assets/remark/global/vendor/datatables.net/jquery.dataTables.js')}}"></script>
