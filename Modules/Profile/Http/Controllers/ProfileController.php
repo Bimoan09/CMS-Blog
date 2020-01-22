@@ -1,45 +1,29 @@
 <?php
 
-namespace Modules\Artikel\Http\Controllers\Member;
+namespace Modules\Profile\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-use Modules\Artikel\Repositories\ArtikelRepository;
-use Modules\Artikel\Repositories\CategoryRepository;
-use Modules\Artikel\Entities\Article;
 
-
-class ArtikelController extends Controller
+class ProfileController extends Controller
 {
-
-    protected $model;
-
-
-    public function __construct(ArtikelRepository $repo)
-    {
-        // set the model
-        $this->repo = $repo;
-    }
-
     /**
      * Display a listing of the resource.
      * @return Response
      */
     public function index()
     {
-        $article = $this->repo->getArticle();
-        return view('artikel::member.index');
+        return view('profile::index');
     }
 
     /**
      * Show the form for creating a new resource.
      * @return Response
      */
-    public function create(CategoryRepository $category)
+    public function create()
     {
-        $getCategory = $this->repo->getCategory($category);
-        return view('artikel::member.create', compact('getCategory'));
+        return view('profile::create');
     }
 
     /**
@@ -49,8 +33,7 @@ class ArtikelController extends Controller
      */
     public function store(Request $request)
     {
-        $storeData = $this->repo->storeArticle($request);
-        return back();
+        //
     }
 
     /**
@@ -58,9 +41,9 @@ class ArtikelController extends Controller
      * @param int $id
      * @return Response
      */
-    public function show($id=1)
+    public function show($id)
     {
-        return view('artikel::member.detail');
+        return view('profile::show');
     }
 
     /**
@@ -70,7 +53,7 @@ class ArtikelController extends Controller
      */
     public function edit($id)
     {
-        return view('artikel::edit');
+        return view('profile::edit');
     }
 
     /**

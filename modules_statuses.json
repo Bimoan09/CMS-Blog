@@ -5,5 +5,6 @@
     "Admin": true,
     "Member": true,
     "Example": true,
-    "Artikel": true
+    "Artikel": true,
+    "Profile": true
 }

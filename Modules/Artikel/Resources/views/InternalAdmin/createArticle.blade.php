@@ -32,16 +32,12 @@
                         <label class="col-md-3 form-control-label">Kategori</label>
                         <div class="col-md-9">
                             <select class="form-control" data-plugin="select2" name="category_id" required>
-                                <optgroup label="Alaskan/Hawaiian Time Zone">
-                                    <option value="AK">Alaska</option>
-                                    <option value="HI">Hawaii</option>
+                                @foreach($getCategory as $data)
+                                <optgroup label="Kategori">
+                                    <option value="{{$data->id}}">{{$data->name}}</option>
                                 </optgroup>
-                                <optgroup label="Pacific Time Zone">
-                                    <option value="CA">California</option>
-                                    <option value="NV">Nevada</option>
-                                    <option value="OR">Oregon</option>
-                                    <option value="WA">Washington</option>
                                 </optgroup>
+                                @endforeach
                             </select>
                         </div>
                     </div>

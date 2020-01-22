@@ -18,6 +18,7 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function() {
     Route::get('/artikel/create', 'Member\ArtikelController@create')->name('member.artikel.create');
     Route::get('/artikel/detail/1', 'Member\ArtikelController@show')->name('member.artikel.show');
     Route::get('/artikel/edit/1', 'Member\ArtikelController@edit')->name('member.artikel.edit');
+    Route::post('/artikel/post', 'Member\ArtikelController@store')->name('member.artikel.store');
 
 });
 
