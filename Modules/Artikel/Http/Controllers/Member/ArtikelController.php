@@ -29,7 +29,7 @@ class ArtikelController extends Controller
     public function index()
     {
         $article = $this->repo->getArticle();
-        return view('artikel::member.index');
+        return view('artikel::Member.index');
     }
 
     /**
@@ -39,7 +39,7 @@ class ArtikelController extends Controller
     public function create(CategoryRepository $category)
     {
         $getCategory = $this->repo->getCategory($category);
-        return view('artikel::member.create', compact('getCategory'));
+        return view('artikel::Member.create', compact('getCategory'));
     }
 
     /**
@@ -60,7 +60,7 @@ class ArtikelController extends Controller
      */
     public function show($id=1)
     {
-        return view('artikel::member.detail');
+        return view('artikel::Member.detail');
     }
 
     /**

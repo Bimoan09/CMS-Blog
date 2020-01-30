@@ -14,7 +14,7 @@ class ArtikelController extends Controller
      */
     public function index()
     {
-        return view('artikel::internaladmin.indexArticle');
+        return view('artikel::Internaladmin.indexArticle');
     }
 
     /**
@@ -23,7 +23,7 @@ class ArtikelController extends Controller
      */
     public function create()
     {
-        return view('artikel::internaladmin.createArticle');
+        return view('artikel::Internaladmin.createArticle');
     }
 
     /**
