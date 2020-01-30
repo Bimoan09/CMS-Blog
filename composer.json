@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.2",
         "ckfinder/ckfinder-laravel-package": "v3.5.1.2",
+        "csanquer/pdo-service-provider": "~1.1dev",
         "fideloper/proxy": "^4.0",
         "fzaninotto/faker": "^1.8",
         "laravel/framework": "^6.2",
