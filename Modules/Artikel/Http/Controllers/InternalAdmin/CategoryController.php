@@ -5,9 +5,20 @@ namespace Modules\Artikel\Http\Controllers\InternalAdmin;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Modules\Artikel\Repositories\CategoryRepository;
 
 class CategoryController extends Controller
 {
+
+    protected $model;
+
+
+    public function __construct(CategoryRepository $repo)
+    {
+        // set the model
+        $this->repo = $repo;
+    }
+
     /**
      * Display a listing of the resource.
      * @return Response
@@ -33,7 +44,8 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $insert = $this->repo->storeCategory($request);
+        return back();
     }
 
     /**

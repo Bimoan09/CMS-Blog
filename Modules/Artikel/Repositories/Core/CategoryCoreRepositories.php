@@ -18,7 +18,7 @@ interface CategoryCoreRepositories
 
     // public function update($id, array $data);
 
-    // public function store(array $data);
+    public function storeCategory(array $request);
 
     // public function edit($id);
 

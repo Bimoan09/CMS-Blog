@@ -31,6 +31,7 @@ Route::group(['prefix' => 'admin' , 'middleware' => ['auth', 'AdminType']], func
     Route::get('/kategori/list', 'InternalAdmin\CategoryController@index')->name('admin.category.index');
     Route::get('/banner/create', 'InternalAdmin\BannerController@create')->name('admin.banner.create');
     Route::get('/banner/list', 'InternalAdmin\BannerController@index')->name('admin.banner.index');
+    Route::post('/kategori/post', 'InternalAdmin\CategoryController@store')->name('admin.category.store');
 
 
 });

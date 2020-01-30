@@ -13,18 +13,19 @@
                 <h3 class="panel-title">Buat Kategori</h3>
             </div>
             <div class="panel-body">
-                <form class="form-horizontal" id="exampleSummaryForm" autocomplete="off">
+            <form action="{{route('admin.category.store')}}" method="POST" class="form-horizontal" id="exampleSummaryForm" autocomplete="on">
+                {{csrf_field()}}
                     <div class="form-group row">
                         <label class="col-md-3 form-control-label">kategori</label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" name="category" required/>
+                            <input type="text" class="form-control" name="name" required/>
                         </div>
                     </div>
-                    <!-- Example Default -->
+
                     <div class="form-group row">
-                        <label class="col-md-3 form-control-label">Deskripsi</label>
+                        <label class="col-md-3 form-control-label">Slug</label>
                         <div class="col-md-9">
-                            <textarea id="konten" class="form-control" name="konten" rows="30" cols="30"></textarea>
+                            <input type="text" class="form-control" name="slug" required/>
                         </div>
                     </div>
                     <div class="text-center">
