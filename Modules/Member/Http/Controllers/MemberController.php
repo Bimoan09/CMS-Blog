@@ -17,7 +17,7 @@ class MemberController extends Controller
     public function index()
     {
         
-        return view('member::timeline.index');
+        return view('member::Timeline.index');
     }
 
     /**
