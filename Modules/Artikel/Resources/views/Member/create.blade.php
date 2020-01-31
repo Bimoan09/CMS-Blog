@@ -13,7 +13,7 @@
                 <h3 class="panel-title">Buat Artikel</h3>
             </div>
             <div class="panel-body">
-                <form action="{{route('member.artikel.store')}}" method="POST" class="form-horizontal" id="exampleSummaryForm" autocomplete="off">
+                <form action="{{route('member.artikel.store')}}" method="POST" class="form-horizontal" id="exampleSummaryForm" autocomplete="off" enctype="multipart/form-data">
                     {{csrf_field()}}
                     <div class="form-group row">
                         <label class="col-md-3 form-control-label">Judul</label>
@@ -25,7 +25,7 @@
                     <div class="form-group row">
                         <label class="col-md-3 form-control-label">Gambar cover</label>
                         <div class="col-md-9">
-                            <input type="file" name="featured_image" id="input-file-now" data-plugin="dropify" data-default-file="" required/>
+                            <input type="file" name="featured_image" id="input-file-now" data-plugin="dropify" required/>
                         </div>
                     </div>
                     <!-- End Example Default -->
@@ -40,6 +40,12 @@
                                 </optgroup>
                                 @endforeach
                             </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 form-control-label">Deskripsi Gambar</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" name="featuredimage_description" required/>
                         </div>
                     </div>
                     <div class="form-group row">

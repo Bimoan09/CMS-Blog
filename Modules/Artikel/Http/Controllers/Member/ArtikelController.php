@@ -93,4 +93,10 @@ class ArtikelController extends Controller
     {
         //
     }
+
+    public function getImage()
+    {
+        $article = Article::select('featured_image')->get();
+        return view('welcome', compact('article'));
+    }
 }
