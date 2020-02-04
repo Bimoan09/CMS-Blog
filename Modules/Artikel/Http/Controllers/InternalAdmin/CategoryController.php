@@ -23,9 +23,10 @@ class CategoryController extends Controller
      * Display a listing of the resource.
      * @return Response
      */
-    public function index()
+    public function index(CategoryRepository $category)
     {
-        return view('artikel::internaladmin.indexCategory');
+        $data['getCategory'] = $this->repo->getCat($category);
+        return view('artikel::internaladmin.indexCategory', $data);
     }
 
     /**

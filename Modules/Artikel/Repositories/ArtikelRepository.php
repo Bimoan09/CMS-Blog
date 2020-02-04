@@ -56,22 +56,6 @@ class ArtikelRepository implements ArticleCoreRepository
         $fileName = Carbon::now()->timestamp. '-' . uniqid() . '.' . $reqImage->getClientOriginalName();
         Image::make($reqImage)->resize(200,300)->save(storage_path('app/public/' . '/' . $fileName));
 
-        
-        // //loop array dimension
-
-        // foreach($this->dimensions as $row){
-        //     //membuat canvas sebesar image yg ada di dalam array
-        //     $canvas = Image::canvas($row,$row);
-
-        //     //resize image dengan mempertahankan ratio
-
-        //     $resizeImage = Image::make($reqImage)->resize($row,$row, function($constraints){
-        //         $constraints->aspectRatio();
-        //     });
-
-
-        
-
         $storeData = $this->article->create([
             'tittle'                    => $request->tittle,
             'content'                   => $request->content,

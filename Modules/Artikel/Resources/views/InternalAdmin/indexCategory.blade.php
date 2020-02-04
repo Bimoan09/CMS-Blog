@@ -1,6 +1,6 @@
 @extends('masterfrontend::layouts.main')
 
-@section('title', 'List Artikel')
+@section('title', 'List Kategori')
 
 
 @section('content')
@@ -12,13 +12,11 @@
             <h1 class="page-title">DataTables</h1>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{route('member.home')}}">Beranda</a></li>
-                <li class="breadcrumb-item active">Artikel</li>
+                <li class="breadcrumb-item active">Kategori</li>
             </ol>
             <div class="page-header-actions">
-                <a class="btn btn-sm btn-primary btn-round" href="http://datatables.net" target="_blank">
-                    <i class="icon md-link" aria-hidden="true"></i>
-                    <span class="hidden-sm-down">Buat Artikel</span>
-                </a>
+                <button type="button" class="btn btn-info btn-sm" data-target="#modalCategory" data-toggle="modal">Buat Kategori</button>
+                <button type="button"  class="btn btn-info btn-sm" data-target="#modalSUbcategory" data-toggle="modal">Buat Sub-Kategori</button>
             </div>
         </div>
 
@@ -33,88 +31,50 @@
                     <table class="table table-hover dataTable table-striped w-full" id="exampleTableSearch">
                         <thead>
                             <tr>
-                                <th>No</th>
-                                <th>Kategori</th>
+                
+                                <th>Nama</th>
+                                <th>Slug</th>
+                                <th>Meta tag description</th>
                                 <th>Jumlah Artikel</th>
-                                <th>Penulis</th>
+                                <th>Jumlah sub kategori</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
-                                <th>No</th>
-                                <th>Kategori</th>
+                                <th>Nama</th>
+                                <th>Slug</th>
+                                <th>Meta tag description</th>
                                 <th>Jumlah Artikel</th>
-                                <th>Penulis</th>
+                                <th>Jumlah sub kategori</th>
                                 <th>Aksi</th>
                             </tr>
                         </tfoot>
                         <tbody>
+                            @foreach($getCategory as $value)
                             <tr>
-                                <td>1</td>
-                                <td>Programming</td>
-                                <td>26</td>
-                                <td><a href="http://example.com">Sofyan</a>
-                                </td>
-                                <td> <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
-                                        data-toggle="tooltip" data-original-title="Rincian">
-                                        <a href="{{route('member.artikel.show')}}" <i class="icon md-book"
-                                            aria-hidden="true"></i></a>
-                                    </button>
-                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
-                                        data-toggle="tooltip" data-original-title="Ubah">
-                                        <a href="{{route('member.artikel.edit')}}" <i class="icon md-wrench"
-                                            aria-hidden="true"></i></a>
-                                    </button>
-                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
-                                        data-toggle="tooltip" data-original-title="Hapus">
-                                        <i class="icon md-close" aria-hidden="true"></i>
-                                    </button>
-                                </td>
+                            <td>{{$value->name}}</td>
+                            <td>{{$value->slug}}</td>
+                            <td>{{$value->meta_tag_description}}</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td> <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
+                                data-toggle="tooltip" data-original-title="Rincian">
+                                <a href="#" <i class="icon md-book"
+                                    aria-hidden="true"></i></a>
+                            </button>
+                            <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
+                                data-toggle="tooltip" data-original-title="Ubah">
+                                <a href="#" <i class="icon md-wrench"
+                                    aria-hidden="true"></i></a>
+                            </button>
+                            <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
+                                data-toggle="tooltip" data-original-title="Hapus">
+                                <i class="icon md-close" aria-hidden="true"></i>
+                            </button>
+                        </td>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Programming</td>
-                                <td>12</td>
-                                <td><a href="http://example.com">Indah</a>
-                                <td> <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
-                                        data-toggle="tooltip" data-original-title="Rincian">
-                                        <a href="{{route('member.artikel.show')}}" <i class="icon md-book"
-                                            aria-hidden="true"></i></a>
-                                    </button>
-                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
-                                        data-toggle="tooltip" data-original-title="Ubah">
-                                        <a href="{{route('member.artikel.edit')}}" <i class="icon md-wrench"
-                                            aria-hidden="true"></i></a>
-                                    </button>
-                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
-                                        data-toggle="tooltip" data-original-title="Hapus">
-                                        <i class="icon md-close" aria-hidden="true"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Programming</td>
-                                <td>26</td>
-                                <td><a href="http://example.com">Idris</a>
-                                <td> <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
-                                        data-toggle="tooltip" data-original-title="Rincian">
-                                        <a href="{{route('member.artikel.show')}}" <i class="icon md-book"
-                                            aria-hidden="true"></i></a>
-                                    </button>
-                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
-                                        data-toggle="tooltip" data-original-title="Ubah">
-                                        <a href="{{route('member.artikel.edit')}}" <i class="icon md-wrench"
-                                            aria-hidden="true"></i></a>
-                                    </button>
-                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
-                                        data-toggle="tooltip" data-original-title="Hapus">
-                                        <i class="icon md-close" aria-hidden="true"></i>
-                                    </button>
-                                </td>
-                            </tr>
-
+                            @endforeach
 
                         </tbody>
                     </table>

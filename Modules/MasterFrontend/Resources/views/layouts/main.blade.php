@@ -49,6 +49,7 @@
             <link rel="stylesheet" href="{{asset('assets/remark/global/vendor/dropify/dropify.css')}}">
             <link rel="stylesheet" href="{{asset('assets/remark/assets/examples/css/apps/documents.css')}}">
             <link rel="stylesheet" href="{{asset('assets/remark/global/vendor/waves/waves.css')}}">
+            <link rel="stylesheet" href="{{asset('assets/remark/assets/examples/css/uikit/modals.css')}}">
             <!-- End Remark template -->
 
 
@@ -80,6 +81,7 @@
         {{-- @include('masterfrontend::layouts.sidenav') --}}
 
         @include('masterfrontend::layouts.header')
+        @include('masterfrontend::layouts.modal')
 
         <main class="app-layout-content">
             @yield('content')
@@ -124,6 +126,7 @@
         <script src="{{asset('assets/remark/global/vendor/dropify/dropify.min.js')}}"></script>
         <script src="{{asset('assets/remark/global/vendor/bootstrap-select/bootstrap-select.js')}}"></script>
         <script src="{{asset('assets/remark/global/vendor/waves/waves.js')}}"></script>
+  
         
         <!-- Datatables -->
         <script src="{{asset('assets/remark/global/vendor/datatables.net/jquery.dataTables.js')}}"></script>

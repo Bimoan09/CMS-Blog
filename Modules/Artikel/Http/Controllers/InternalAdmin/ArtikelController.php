@@ -5,9 +5,26 @@ namespace Modules\Artikel\Http\Controllers\InternalAdmin;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Modules\Artikel\Repositories\ArtikelRepository;
+use Modules\Artikel\Repositories\CategoryRepository;
+use Modules\Artikel\Entities\Article;
+use Modules\Artikel\Entities\Category;
 
 class ArtikelController extends Controller
 {
+
+
+
+    protected $model;
+
+
+    public function __construct(ArtikelRepository $repo)
+    {
+        // set the model
+        $this->repo = $repo;
+    }
+
+
     /**
      * Display a listing of the resource.
      * @return Response
@@ -21,9 +38,10 @@ class ArtikelController extends Controller
      * Show the form for creating a new resource.
      * @return Response
      */
-    public function create()
+    public function create(CategoryRepository $category)
     {
-        return view('artikel::Internaladmin.createArticle');
+        $data['getCategory'] = $this->repo->getCategory($category);
+        return view('artikel::Internaladmin.createArticle', $data);
     }
 
     /**

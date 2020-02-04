@@ -36,9 +36,10 @@ class CategoryRepository implements CategoryCoreRepositories
     public function storeCategory($request)
     {
         return $this->category->create([
-            'name'      => $request->name,
-            'slug'      => $request->slug,
-            'asigned'   => 1,
+            'name'                  => $request->name,
+            'slug'                  => $request->slug,
+            'asigned'               => $request->asigned,
+            'meta_tag_description'  => $request->meta_tag_description,
         ]);
         
     }

@@ -1,4 +1,7 @@
-   <!-- Header -->
+  @include('masterfrontend::layouts.modal')
+  
+
+  <!-- Header -->
    <nav class="site-navbar navbar navbar-default navbar-fixed-top navbar-mega navbar-inverse" role="navigation">
        <div class="navbar-header">
            <button type="button" class="navbar-toggler hamburger hamburger-close navbar-toggler-left hided"
@@ -341,11 +344,16 @@
                            <span class="site-menu-arrow"></span>
                        </a>
                        <ul class="site-menu-sub">
-                           <li class="site-menu-item has-sub ">
-                           <a href="{{route('admin.category.create')}}">
+                           {{-- <li class="site-menu-item has-sub ">
+                           <a href="#exampleFormModal" data-target="#exampleFormModal" data-toogle="modal">
                                    <span class="site-menu-title">Buat Kategori</span>
                                </a>
                            </li>
+                           <li class="site-menu-item has-sub ">
+                            <a href="{{route('admin.category.create')}}">
+                                    <span class="site-menu-title">Buat SubKategori</span>
+                                </a>
+                            </li> --}}
                            <li class="site-menu-item has-sub ">
                            <a href="{{route('admin.category.index')}}">
                                    <span class="site-menu-title">Daftar kategori</span>
@@ -354,6 +362,41 @@
                            </li>
                        </ul>
                    </li>
+                   
+  <!-- Modal -->
+  <div class="modal fade" id="exampleFormModal" aria-hidden="false" aria-labelledby="exampleFormModalLabel"
+  role="dialog" tabindex="-1">
+  <div class="modal-dialog modal-simple">
+    <form class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title" id="exampleFormModalLabel">Set The Messages</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-xl-4 form-group">
+            <input type="text" class="form-control" name="firstName" placeholder="First Name">
+          </div>
+          <div class="col-xl-4 form-group">
+            <input type="email" class="form-control" name="lastName" placeholder="Last Name">
+          </div>
+          <div class="col-xl-4 form-group">
+            <input type="email" class="form-control" name="email" placeholder="Your Email">
+          </div>
+          <div class="col-xl-12 form-group">
+            <textarea class="form-control" rows="5" placeholder="Type your message"></textarea>
+          </div>
+          <div class="col-md-12 float-right">
+            <button class="btn btn-primary" data-dismiss="modal" type="button">Add Comment</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- End Modal -->
                    <li class="site-menu-item has-sub">
                        <a href="javascript:void(0)" dropdown-badge="false">
                            <i class="site-menu-icon md-google-pages" aria-hidden="true"></i>

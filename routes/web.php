@@ -15,5 +15,5 @@
 //     return view('welcome');
 // });
 
-
+Route::get('/data', 'TestingDataController@testingData');
 

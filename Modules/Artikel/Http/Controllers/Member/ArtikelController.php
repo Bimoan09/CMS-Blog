@@ -8,7 +8,7 @@ use Illuminate\Routing\Controller;
 use Modules\Artikel\Repositories\ArtikelRepository;
 use Modules\Artikel\Repositories\CategoryRepository;
 use Modules\Artikel\Entities\Article;
-
+use Modules\Artikel\Entities\Category;
 
 class ArtikelController extends Controller
 {
@@ -98,5 +98,15 @@ class ArtikelController extends Controller
     {
         $article = Article::select('featured_image')->get();
         return view('welcome', compact('article'));
+    }
+
+    public function testingData($slug)
+    {
+        
+        $data  = Category::where('slug', $slug)->first();
+        $relations = $data->articles;
+        // $data = \DB::table('articles')->where('category_id', $id)->get();
+        
+        return view('artikel::member.testing', compact('data', 'relations'));
     }
 }
