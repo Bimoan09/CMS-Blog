@@ -94,19 +94,19 @@ class ArtikelController extends Controller
         //
     }
 
-    public function getImage()
-    {
-        $article = Article::select('featured_image')->get();
-        return view('welcome', compact('article'));
-    }
+    // public function getImage()
+    // {
+    //     $article = Article::select('featured_image')->get();
+    //     return view('welcome', compact('article'));
+    // }
 
-    public function testingData($slug)
-    {
+    // public function testingData($slug)
+    // {
         
-        $data  = Category::where('slug', $slug)->first();
-        $relations = $data->articles;
-        // $data = \DB::table('articles')->where('category_id', $id)->get();
+    //     $data  = Category::where('slug', $slug)->first();
+    //     $relations = $data->articles;
+    //     // $data = \DB::table('articles')->where('category_id', $id)->get();
         
-        return view('artikel::member.testing', compact('data', 'relations'));
-    }
+    //     return view('artikel::member.testing', compact('data', 'relations'));
+    // }
 }

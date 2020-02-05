@@ -46,7 +46,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $insert = $this->repo->storeCategory($request);
-        return back();
+        return back()->with('success', 'Kategori berhasil dibuat');
     }
 
     /**
@@ -85,8 +85,9 @@ class CategoryController extends Controller
      * @param int $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+       $data['deleteAjax'] =  $this->repo->deleteCategory($request);
+       return back()->with('failed', 'Kategori berhasil dihapus');
     }
 }

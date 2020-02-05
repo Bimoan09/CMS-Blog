@@ -25,12 +25,8 @@ class CreateArticlesTable extends Migration
             $table->date('date_published');
             $table->text('meta_tag_keyword');
             $table->text('meta_tag_description');
-            $table->bigInteger('subcategory_id')->unsigned()->nullable();
             $table->bigInteger('category_id')->unsigned()->nullable();
             $table->bigInteger('user_id')->unsigned()->nullable();
-            $table->foreign('subcategory_id')
-                    ->references('id')
-                    ->on('sub_categories')->onDelete('cascade');
             $table->foreign('category_id')
                     ->references('id')
                     ->on('categories')->onDelete('cascade');

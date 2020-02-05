@@ -91,7 +91,7 @@
 
         @yield('javascript')
 
-        <script src="{{asset('assets/remark/global/vendor/jquery/jquery.js')}}"></script>
+         <script src="{{asset('assets/remark/global/vendor/jquery/jquery.js')}}"></script> 
         <script src="{{asset('assets/remark/global/vendor/babel-external-helpers/babel-external-helpers.js')}}">
         </script>
 
@@ -101,11 +101,9 @@
         <script src="{{asset('assets/remark/global/vendor/mousewheel/jquery.mousewheel.js')}}"></script>
 
         <!-- Page plugin -->
-        <script src="{{asset('assets/remark/global/vendor/switchery/switchery.js')}}"></script>
-        <script src="{{asset('assets/remark/global/vendor/intro-js/intro.js')}}"></script>
-        <script src="{{asset('assets/remark/global/vendor/screenfull/screenfull.js')}}"></script>
+        {{-- <script src="{{asset('assets/remark/global/vendor/switchery/switchery.js')}}"></script>
+        <script src="{{asset('assets/remark/global/vendor/intro-js/intro.js')}}"></script> --}}
         <script src="{{asset('assets/remark/global/vendor/slidepanel/jquery-slidePanel.js')}}"></script>
-        <script src="{{asset('assets/remark/global/vendor/chartist/chartist.min.js')}}"></script>
         <script src="{{asset('assets/remark/global/vendor/matchheight/jquery.matchHeight-min.js')}}"></script>
 
         <script src="{{asset('assets/remark/global/js/Component.js')}}"></script>

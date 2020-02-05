@@ -19,8 +19,9 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function() {
     Route::get('/artikel/detail/1', 'Member\ArtikelController@show')->name('member.artikel.show');
     Route::get('/artikel/edit/1', 'Member\ArtikelController@edit')->name('member.artikel.edit');
     Route::post('/artikel/post', 'Member\ArtikelController@store')->name('member.artikel.store');
-    Route::get('/artikel/image', 'Member\ArtikelController@getImage');
-    Route::get('/data/{slug}', 'Member\ArtikelController@testingData');
+    
+    // Route::get('/artikel/image', 'Member\ArtikelController@getImage');
+    // Route::get('/data/{slug}', 'Member\ArtikelController@testingData');
 
 });
 
@@ -33,7 +34,8 @@ Route::group(['prefix' => 'admin' , 'middleware' => ['auth', 'AdminType']], func
     Route::get('/kategori/list', 'InternalAdmin\CategoryController@index')->name('admin.category.index');
     Route::get('/banner/create', 'InternalAdmin\BannerController@create')->name('admin.banner.create');
     Route::get('/banner/list', 'InternalAdmin\BannerController@index')->name('admin.banner.index');
+    Route::get('/kategori/delete/{id}', 'InternalAdmin\CategoryController@destroy')->name('admin.category.deleteCategory');
     Route::post('/kategori/post', 'InternalAdmin\CategoryController@store')->name('admin.category.store');
-
+  
 
 });
