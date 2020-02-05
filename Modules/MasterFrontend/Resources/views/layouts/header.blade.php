@@ -359,6 +359,10 @@
                                    <span class="site-menu-title">Daftar kategori</span>
                                    <span class="site-menu-arrow"></span>
                                </a>
+                               <a href="{{route('admin.tags.index')}}">
+                                <span class="site-menu-title">Daftar Tags</span>
+                                <span class="site-menu-arrow"></span>
+                            </a>
                            </li>
                        </ul>
                    </li>

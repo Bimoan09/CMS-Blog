@@ -38,33 +38,60 @@
                 </div>
                 <!-- End Modal -->
 
-
-                <!-- modal delete -->
-
-                <div id="categoryDelete" class="modal fade" role="dialog">
-                    <div class="modal-dialog">
+                <!-- Kategori Modal -->
+                <div id="DeleteModal" class="modal fade text-danger" role="dialog">
+                    <div class="modal-dialog ">
                         <!-- Modal content-->
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title"></h4>
-                            </div>
-                            <div class="modal-body">
-                                <div class="deleteContent">
-                                    Apa Anda yakin ingin menghapus Data Kategori <b><span class="categoryName"
-                                            style="color: red"></span></b> ?
-                                    <span class="hidden did"></span>
+                        <form action="" id="deleteForm" method="post">
+                            <div class="modal-content">
+                                <div class="modal-header bg-danger">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title text-center">Konfirmasi hapus</h4>
+                                </div>
+                                <div class="modal-body">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+                                    <p class="text-center">yakin ingin menghapus ?</p>
                                 </div>
                                 <div class="modal-footer">
-                                 <a class="btn btn-danger delete_user" href="{{route('admin.category.deleteCategory', $value->id)}}" id="{{$value->id}}">Hapus</a> -
-                                    <button type="button" class="btn btn-sm btn-warning" data-dismiss="modal">
-                                        <span class='glyphicon glyphicon-remove'></span> Batalkan
-                                    </button>
+                                    <center>
+                                        <button type="button" class="btn btn-success"
+                                            data-dismiss="modal">Batalkan</button>
+                                        <button type="submit" name="" class="btn btn-danger" data-dismiss="modal"
+                                            onclick="formSubmit()">Ya, Hapus</button>
+                                    </center>
                                 </div>
                             </div>
-                        </div>
-                    </div>  
+                        </form>
+                    </div>
                 </div>
-            
+                <!-- End Modal Kategori -->
 
-                <!-- end modal delete -->
+                <!-- Tags Modal -->
+                <div id="DeleteModalTags" class="modal fade text-danger" role="dialog">
+                    <div class="modal-dialog ">
+                        <!-- Modal content-->
+                        <form action="" id="deleteForm" method="post">
+                            <div class="modal-content">
+                                <div class="modal-header bg-danger">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title text-center">Konfirmasi hapus</h4>
+                                </div>
+                                <div class="modal-body">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+                                    <p class="text-center">yakin ingin menghapus ? <b><span class="tagsName" style="color: red"></span></b></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <center>
+                                        <button type="button" class="btn btn-success"
+                                            data-dismiss="modal">Batalkan</button>
+                                        <button type="submit" name="" class="btn btn-danger" data-dismiss="modal"
+                                            onclick="formSubmit()">Ya, Hapus</button>
+                                    </center>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- End Modal Kategori -->

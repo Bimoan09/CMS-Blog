@@ -28,14 +28,24 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function() {
 
 //Internal Admin Artikel
 Route::group(['prefix' => 'admin' , 'middleware' => ['auth', 'AdminType']], function() {
+
+    // artikel
     Route::get('/artikel/list', 'InternalAdmin\ArtikelController@index')->name('admin.artikel.index');
     Route::get('/artikel/create', 'InternalAdmin\ArtikelController@create')->name('admin.artikel.create');
+
+    //kategori
     Route::get('/kategori/create', 'InternalAdmin\CategoryController@create')->name('admin.category.create');
     Route::get('/kategori/list', 'InternalAdmin\CategoryController@index')->name('admin.category.index');
+    Route::delete('/kategori/delete/{id}', 'InternalAdmin\CategoryController@destroy')->name('admin.category.deleteCategory');
+    Route::post('/kategori/post', 'InternalAdmin\CategoryController@store')->name('admin.category.store');
+
+    //banner
     Route::get('/banner/create', 'InternalAdmin\BannerController@create')->name('admin.banner.create');
     Route::get('/banner/list', 'InternalAdmin\BannerController@index')->name('admin.banner.index');
-    Route::get('/kategori/delete/{id}', 'InternalAdmin\CategoryController@destroy')->name('admin.category.deleteCategory');
-    Route::post('/kategori/post', 'InternalAdmin\CategoryController@store')->name('admin.category.store');
+
+    //tags 
+    Route::get('/tags/list', 'InternalAdmin\TagsController@index')->name('admin.tags.index');
+    Route::delete('/tags/delete/{id}', 'InternalAdmin\TagsController@destroy')->name('admin.tags.delete');
   
 
 });
