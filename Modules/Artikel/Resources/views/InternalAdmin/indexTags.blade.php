@@ -31,7 +31,7 @@
                     <h3 class="panel-title">Daftar Tags</h3>
                 </header>
                 <div class="panel-body">
-                    <table class="table table-hover dataTable table-striped w-full" id="exampleTableSearch">
+                    <table class="table table-hover dataTable table-striped" id="exampleTableSearch">
                         <thead>
                             <tr>
 

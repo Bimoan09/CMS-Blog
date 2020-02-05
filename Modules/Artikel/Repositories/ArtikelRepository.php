@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Model;
 use Modules\Artikel\Entities\Article;
 use Modules\Artikel\Repositories\Core\ArticleCoreRepository;
 use Modules\Artikel\Repositories\CategoryRepository;
+use Modules\Artikel\Repositories\TagsRepository;
 use Carbon\Carbon;
 use Image;
 use File;
@@ -28,10 +29,11 @@ class ArtikelRepository implements ArticleCoreRepository
     public $dimensions;
 
     // Constructor to bind model to repo
-    public function __construct(Article $article,CategoryRepository $category)
+    public function __construct(Article $article,CategoryRepository $category, TagsRepository $tags)
     {
         $this->article = $article;
         $this->category = $category;
+        $this->tags = $tags;
 
         //image path
         // $this->path = public_path('/images');
@@ -70,6 +72,11 @@ class ArtikelRepository implements ArticleCoreRepository
     public function getCategory(CategoryRepository $category)
     {
         return $this->category->getCat();
+    }
+
+    public function getTagsline(TagsRepository $tags)
+    {
+        return $this->tags->getTags();
     }
 
 
