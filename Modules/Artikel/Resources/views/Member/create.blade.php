@@ -51,7 +51,18 @@
                             </select>
                         </div>
                     </div>
-
+                    <div class="form-group row">
+                        <label class="col-md-3 form-control-label">Tags</label>
+                        <div class="col-md-9">
+                            <select class="form-control" multiple data-plugin="select2" name="tags[]" required>
+                                <optgroup label="Pilih Tags">
+                                @foreach($getTags as $data)
+                                <option value="{{$data->id}}">{{$data->name}}</option>
+                                </optgroup>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
                     <div class="form-group row">
                         <label class="col-md-3 form-control-label">Konten</label>
                         <div class="col-md-9">

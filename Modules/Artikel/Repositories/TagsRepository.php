@@ -11,7 +11,6 @@ namespace Modules\Artikel\Repositories;
     * @lastModified : 22-01-2020, 15:05
  */
 
-
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Artikel\Entities\Tags;

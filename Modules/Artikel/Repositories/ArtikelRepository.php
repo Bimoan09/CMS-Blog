@@ -63,10 +63,11 @@ class ArtikelRepository implements ArticleCoreRepository
             'content'                   => $request->content,
             'featured_image'            => $fileName,
             'featuredimage_description'  => $request->featuredimage_description,
-            'featuredimage_dimension'   => '1',
+            'status'                => 1,
             'category_id'               => $request->category_id,
         ]);
-        return $storeData;
+         $storeData->tags()->sync((array)$request->input('tags'));
+         return $storeData;
     }
 
     public function getCategory(CategoryRepository $category)

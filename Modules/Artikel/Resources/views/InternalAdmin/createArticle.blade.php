@@ -29,6 +29,14 @@
                         </div>
                     </div>
                     <!-- End Example Default -->
+
+                    <div class="form-group row">
+                        <label class="col-md-3 form-control-label">Deskripsi Gambar cover</label>
+                        <div class="col-md-9">
+                            <textarea class="form-control" name="featuredimage_description" rows="5" cols="5"></textarea>
+                        </div>
+                    </div>
+
                     <div class="form-group row">
                         <label class="col-md-3 form-control-label">Kategori</label>
                         <div class="col-md-9">

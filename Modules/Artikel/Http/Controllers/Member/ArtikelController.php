@@ -7,6 +7,7 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Artikel\Repositories\ArtikelRepository;
 use Modules\Artikel\Repositories\CategoryRepository;
+use Modules\Artikel\Repositories\TagsRepository;
 use Modules\Artikel\Entities\Article;
 use Modules\Artikel\Entities\Category;
 
@@ -36,10 +37,11 @@ class ArtikelController extends Controller
      * Show the form for creating a new resource.
      * @return Response
      */
-    public function create(CategoryRepository $category)
+    public function create(CategoryRepository $category, TagsRepository $tags)
     {
-        $getCategory = $this->repo->getCategory($category);
-        return view('artikel::Member.create', compact('getCategory'));
+        $data['getCategory'] = $this->repo->getCategory($category);
+        $data['getTags'] = $this->repo->getTagsline($tags);
+        return view('artikel::Member.create', $data);
     }
 
     /**
