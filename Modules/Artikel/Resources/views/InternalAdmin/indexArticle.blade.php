@@ -77,7 +77,7 @@
                                 </td>
                                 <td> <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
                                         data-toggle="tooltip" data-original-title="Rincian">
-                                        <a href="{{route('admin.artikel.detail', $value->tittle)}}" <i class="icon md-book"
+                                        <a href="{{route('admin.artikel.detail', Str::slug($value->tittle))}}" <i class="icon md-book"
                                             aria-hidden="true"></i></a>
                                     </button>
                                     <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"

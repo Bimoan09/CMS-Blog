@@ -20,6 +20,7 @@ use Modules\Artikel\Repositories\TagsRepository;
 use Carbon\Carbon;
 use Image;
 use File;
+use Str;
 
 class ArtikelRepository implements ArticleCoreRepository
 {
@@ -58,10 +59,11 @@ class ArtikelRepository implements ArticleCoreRepository
         $reqImage = $request->file('featured_image');
         
         $fileName = Carbon::now()->timestamp. '-' . uniqid() . '.' . $reqImage->getClientOriginalName();
-        Image::make($reqImage)->resize(340,340)->save(storage_path('app/public/' . '/' . $fileName));
+        Image::make($reqImage)->resize(640,360)->save(storage_path('app/public/' . '/' . $fileName));
 
         $storeData = $this->article->create([
             'tittle'                    => $request->tittle,
+            'slug'                      => Str::slug($request->tittle),
             'content'                   => $request->content,
             'featured_image'            => $fileName,
             'featuredimage_description' => $request->featuredimage_description,
@@ -98,9 +100,9 @@ class ArtikelRepository implements ArticleCoreRepository
         return $getArticle;
     }
 
-    public function findArticle($tittle)
+    public function findArticle($slug)
     {
-        $test = $this->article->where('tittle', $tittle)->first();
+        $test = $this->article->where('slug', $slug)->first();
       return $test;
        
         

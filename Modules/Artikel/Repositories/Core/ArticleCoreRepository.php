@@ -26,7 +26,7 @@ public function getTagsline(TagsRepository $tags);
 
 public function getArticleMember();
 
-public function findArticle($id);
+public function findArticle($slug);
 
 
 // public function edit($id);

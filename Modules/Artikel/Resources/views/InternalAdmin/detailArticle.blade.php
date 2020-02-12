@@ -20,18 +20,18 @@
                 </thead>
                 <tbody>
                     <tr>
-                    <td>{{$detail->category->name}}</td>
-                    <td>{{$detail->tittle}}</td>
-                    <td>{{$detail->users->name}}</td>
-                        <td> 
+                        <td>{{$detail->category->name}}</td>
+                        <td>{{$detail->tittle}}</td>
+                        <td>{{$detail->users->name}}</td>
+                        <td>
                             @if($detail->status == 1)
-                            <span class="badge badge-success">Review</span>
+                            <span class="badge badge-success">Terbit</span>
                             @elseif($detail->status == 2)
-                            <span class="badge badge-warning">Terbit</span>
+                            <span class="badge badge-warning">Review</span>
                             @elseif($detail->status == 3)
                             <span class="badge badge-danger">Reject</span>
                             @endif
-                        
+
                         </td>
                     </tr>
             </table>
@@ -43,13 +43,19 @@
                         <center>
                             <h4>{{$detail->tittle}}</h4>
 
-                            <img src="{{asset('storage/' . $detail->featured_image)}}" width="40%" height="50%" />
+                            <img src="{{asset('storage/' . $detail->featured_image)}}" width="640px" height="360px" />
+                            <br>
+                            <br>
+                            <p>{{$detail->featuredimage_description}}</p>
                             <br>
                         </center>
                     </section>
-                <br>
+                    <br>
                     <p>
-               {!! $detail->content !!}
+                        <center>
+                            {!! $detail->content !!}
+
+                        </center>
                     </p>
                     </section>
                 </div>

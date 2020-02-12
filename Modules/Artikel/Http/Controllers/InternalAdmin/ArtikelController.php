@@ -70,9 +70,9 @@ class ArtikelController extends Controller
      * @param int $id
      * @return Response
      */
-    public function show($tittle)
+    public function show($slug)
     {
-        $data['detail'] = $this->repo->findArticle($tittle);
+        $data['detail'] = $this->repo->findArticle($slug);
         return view('artikel::Internaladmin.detailArticle', $data);
     }
 
