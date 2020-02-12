@@ -13,6 +13,7 @@ namespace Modules\Artikel\Repositories;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Artikel\Entities\Article;
+use Modules\Admin\Entities\User;
 use Modules\Artikel\Repositories\Core\ArticleCoreRepository;
 use Modules\Artikel\Repositories\CategoryRepository;
 use Modules\Artikel\Repositories\TagsRepository;
@@ -29,11 +30,12 @@ class ArtikelRepository implements ArticleCoreRepository
     public $dimensions;
 
     // Constructor to bind model to repo
-    public function __construct(Article $article,CategoryRepository $category, TagsRepository $tags)
+    public function __construct(Article $article,CategoryRepository $category, TagsRepository $tags, User $user)
     {
         $this->article = $article;
         $this->category = $category;
         $this->tags = $tags;
+        
 
         //image path
         // $this->path = public_path('/images');
@@ -48,7 +50,7 @@ class ArtikelRepository implements ArticleCoreRepository
         return $this->article->select('tittle', 'content')->get();
     }
 
-    public function storeArticle($request)
+    public function storeArticleAdmin($request)
     {
 
      
@@ -56,18 +58,20 @@ class ArtikelRepository implements ArticleCoreRepository
         $reqImage = $request->file('featured_image');
         
         $fileName = Carbon::now()->timestamp. '-' . uniqid() . '.' . $reqImage->getClientOriginalName();
-        Image::make($reqImage)->resize(200,300)->save(storage_path('app/public/' . '/' . $fileName));
+        Image::make($reqImage)->resize(340,340)->save(storage_path('app/public/' . '/' . $fileName));
 
         $storeData = $this->article->create([
             'tittle'                    => $request->tittle,
             'content'                   => $request->content,
             'featured_image'            => $fileName,
-            'featuredimage_description'  => $request->featuredimage_description,
-            'status'                => 1,
+            'featuredimage_description' => $request->featuredimage_description,
+            'status'                    => 1,
+            'date_published'            => Carbon::now(),   
             'category_id'               => $request->category_id,
+            'user_id'                   => auth()->user()->id,
+            'article_owner'             => 'internaladmin',
         ]);
          $storeData->tags()->sync((array)$request->input('tags'));
-         return $storeData;
     }
 
     public function getCategory(CategoryRepository $category)
@@ -78,6 +82,28 @@ class ArtikelRepository implements ArticleCoreRepository
     public function getTagsline(TagsRepository $tags)
     {
         return $this->tags->getTags();
+    }
+
+    public function getArticleAdmin()
+    {
+
+        $getArticle = $this->article->where('user_id', auth()->user()->id)->with('users')->get();
+        return $getArticle;
+    }
+
+    public function getArticleMember()
+    {
+
+        $getArticle = $this->article->where('article_owner', 'member')->with('users')->get();
+        return $getArticle;
+    }
+
+    public function findArticle($tittle)
+    {
+        $test = $this->article->where('tittle', $tittle)->first();
+      return $test;
+       
+        
     }
 
 

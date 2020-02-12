@@ -20,8 +20,8 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function() {
     Route::get('/artikel/edit/1', 'Member\ArtikelController@edit')->name('member.artikel.edit');
     Route::post('/artikel/post', 'Member\ArtikelController@store')->name('member.artikel.store');
     
-    // Route::get('/artikel/image', 'Member\ArtikelController@getImage');
-    // Route::get('/data/{slug}', 'Member\ArtikelController@testingData');
+    Route::get('/artikel/image', 'Member\ArtikelController@getImage');
+    Route::get('/data/cache', 'Member\ArtikelController@getCache');
 
 });
 
@@ -31,8 +31,10 @@ Route::group(['prefix' => 'admin' , 'middleware' => ['auth', 'AdminType']], func
 
     // artikel
     Route::get('/artikel/list', 'InternalAdmin\ArtikelController@index')->name('admin.artikel.index');
+    Route::get('/artikel/member/list', 'InternalAdmin\ArtikelController@indexArticleMember')->name('admin.artikel.indexMember');
     Route::get('/artikel/create', 'InternalAdmin\ArtikelController@create')->name('admin.artikel.create');
-
+    Route::get('/artikel/{tittle}', 'InternalAdmin\ArtikelController@show')->name('admin.artikel.detail');
+    Route::post('/artikel/post', 'InternalAdmin\ArtikelController@store')->name('admin.artikel.store');
     //kategori
     Route::get('/kategori/create', 'InternalAdmin\CategoryController@create')->name('admin.category.create');
     Route::get('/kategori/list', 'InternalAdmin\CategoryController@index')->name('admin.category.index');
@@ -41,6 +43,7 @@ Route::group(['prefix' => 'admin' , 'middleware' => ['auth', 'AdminType']], func
 
     //banner
     Route::get('/banner/create', 'InternalAdmin\BannerController@create')->name('admin.banner.create');
+    Route::post('/banner/store', 'InternalAdmin\BannerController@store')->name('admin.banner.store');
     Route::get('/banner/list', 'InternalAdmin\BannerController@index')->name('admin.banner.index');
 
     //tags 

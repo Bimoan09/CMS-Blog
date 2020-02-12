@@ -19,9 +19,7 @@
             <link rel="apple-touch-icon" href="assets/img/favicons/apple-touch-icon.png" />
             <link rel="icon" href="assets/img/favicons/favicon.ico" />
 
-            <!-- Google fonts -->
-            <link rel="stylesheet"
-                href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,900%7CRoboto+Slab:300,400%7CRoboto+Mono:400" />
+
 
 
             <!--Remark template -->

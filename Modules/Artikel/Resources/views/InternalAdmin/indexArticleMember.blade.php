@@ -36,7 +36,7 @@
                                 <th>No</th>
                                 <th>Judul</th>
                                 <th>Kategori</th>
-                                {{-- <th>Tags</th> --}}
+
                                 <th>Jumlah Pembaca</th>
                                 <th>Penulis</th>
                                 <th>Status</th>
@@ -44,12 +44,12 @@
                             </tr>
                         </thead>
                         <tfoot>
-
                             <tr>
+
                                 <th>No</th>
                                 <th>Judul</th>
                                 <th>Kategori</th>
-                                {{-- <th>Tags</th> --}}
+
                                 <th>Jumlah Pembaca</th>
                                 <th>Penulis</th>
                                 <th>Status</th>
@@ -57,11 +57,13 @@
                             </tr>
                         </tfoot>
                         <tbody>
-                            @foreach($articleAdmin as $value)
+                            @foreach($articleMember as $value)
+
                             <tr>
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$value->tittle}}</td>
                                 <td>{{$value->category->name}}</td>
+
 
                                 <td>26</td>
                                 <td><a href="http://example.com">{{$value->users->name}}</a>
@@ -77,7 +79,7 @@
                                 </td>
                                 <td> <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
                                         data-toggle="tooltip" data-original-title="Rincian">
-                                        <a href="{{route('admin.artikel.detail', $value->tittle)}}" <i class="icon md-book"
+                                        <a href="{{route('member.artikel.show')}}" <i class="icon md-book"
                                             aria-hidden="true"></i></a>
                                     </button>
                                     <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
@@ -92,6 +94,7 @@
                                 </td>
                             </tr>
                             @endforeach
+
 
 
 

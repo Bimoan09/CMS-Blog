@@ -10,6 +10,9 @@ use Modules\Artikel\Repositories\CategoryRepository;
 use Modules\Artikel\Repositories\TagsRepository;
 use Modules\Artikel\Entities\Article;
 use Modules\Artikel\Entities\Category;
+use Modules\Artikel\Entities\Tags;
+use Cache;
+use DB;
 
 class ArtikelController extends Controller
 {
@@ -29,7 +32,7 @@ class ArtikelController extends Controller
      */
     public function index()
     {
-        $article = $this->repo->getArticle();
+        $article = $this->repo->getArticleMember();
         return view('artikel::Member.index');
     }
 
@@ -51,7 +54,7 @@ class ArtikelController extends Controller
      */
     public function store(Request $request)
     {
-        $storeData = $this->repo->storeArticle($request);
+        $storeData = $this->repo->storeArticleMember($request);
         return back();
     }
 
@@ -96,11 +99,11 @@ class ArtikelController extends Controller
         //
     }
 
-    // public function getImage()
-    // {
-    //     $article = Article::select('featured_image')->get();
-    //     return view('welcome', compact('article'));
-    // }
+    public function getImage()
+    {
+        $article = Article::select('featured_image')->get();
+        return view('welcome', compact('article'));
+    }
 
     // public function testingData($slug)
     // {
@@ -110,5 +113,19 @@ class ArtikelController extends Controller
     //     // $data = \DB::table('articles')->where('category_id', $id)->get();
         
     //     return view('artikel::member.testing', compact('data', 'relations'));
+    // }
+
+
+    // public function getCache()
+    // {
+
+    //       DB::connection()->enableQueryLog();
+
+       
+    //     $value = Cache::remember('tags_table', 60, function () {
+    //         return DB::table('tags')->get();
+    //     });
+    //     $log = DB::getQueryLog();
+    //     print_r($log);
     // }
 }

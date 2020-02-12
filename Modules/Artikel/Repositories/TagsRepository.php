@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Artikel\Entities\Tags;
 use Modules\Artikel\Repositories\Core\TagsCoreRepository;
-
+use Cache;
 
 class TagsRepository implements TagsCoreRepository
 {
@@ -30,7 +30,9 @@ class TagsRepository implements TagsCoreRepository
 
     public function getTags()
     {
-        return $this->tags->get();
+       return $this->tags->get();
+        
+      
     }
 
     public function storeTags($request)

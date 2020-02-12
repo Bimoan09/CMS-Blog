@@ -12,7 +12,7 @@ class User extends Model
 
     public function articles()
     {
-        return $this->hasMany(Article::class);
+        return $this->hasMany(\Modules\Artikel\Entities\Article::class);
     }
 
     public function profile()

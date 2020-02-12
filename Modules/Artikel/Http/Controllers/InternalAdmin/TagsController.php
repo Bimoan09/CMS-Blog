@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Artikel\Repositories\TagsRepository;
+use Cache;
+use DB;
 
 class TagsController extends Controller
 {
@@ -25,8 +27,8 @@ class TagsController extends Controller
      */
     public function index(TagsRepository $repo)
     {
-        $data['getTags'] = $this->repo->getTags($repo);
-        return view('artikel::internaladmin.indexTags', $data);
+       $getTags = $this->repo->getTags();
+        return view('artikel::internaladmin.indexTags', compact('getTags'));
     }
 
     /**

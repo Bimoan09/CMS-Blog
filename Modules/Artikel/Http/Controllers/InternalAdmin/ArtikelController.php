@@ -10,6 +10,7 @@ use Modules\Artikel\Repositories\CategoryRepository;
 use Modules\Artikel\Repositories\TagsRepository;
 use Modules\Artikel\Entities\Article;
 use Modules\Artikel\Entities\Category;
+use Str;
 
 class ArtikelController extends Controller
 {
@@ -32,7 +33,14 @@ class ArtikelController extends Controller
      */
     public function index()
     {
-        return view('artikel::Internaladmin.indexArticle');
+        $data['articleAdmin'] = $this->repo->getArticleAdmin();
+        return view('artikel::Internaladmin.indexArticle', $data);
+    }
+
+    public function indexArticleMember()
+    {
+        $data['articleMember'] = $this->repo->getArticleMember();
+        return view('artikel::Internaladmin.indexArticleMember', $data);
     }
 
     /**
@@ -53,7 +61,8 @@ class ArtikelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $storeData = $this->repo->storeArticleAdmin($request);
+        return back()->with('success', 'Artikel berhasil diupload');
     }
 
     /**
@@ -61,9 +70,10 @@ class ArtikelController extends Controller
      * @param int $id
      * @return Response
      */
-    public function show($id)
+    public function show($tittle)
     {
-        return view('artikel::show');
+        $data['detail'] = $this->repo->findArticle($tittle);
+        return view('artikel::Internaladmin.detailArticle', $data);
     }
 
     /**

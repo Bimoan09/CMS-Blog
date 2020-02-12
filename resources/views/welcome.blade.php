@@ -86,7 +86,7 @@
 
                 <div class="links">
                   @foreach ($article as $data)
-                  <img src="{{asset('storage/' . $data->featured_image)}}" />
+                  <img src="{{asset('storage/' . $data->featured_image)}}" width="10%" height="10%" />
                   @endforeach
                 </div>
             </div>

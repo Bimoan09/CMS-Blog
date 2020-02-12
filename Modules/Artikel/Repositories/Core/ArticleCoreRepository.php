@@ -20,9 +20,14 @@ public function get();
 
 public function getCategory(CategoryRepository $category);
 
-public function storeArticle($request);
+public function storeArticleAdmin($request);
 
 public function getTagsline(TagsRepository $tags);
+
+public function getArticleMember();
+
+public function findArticle($id);
+
 
 // public function edit($id);
 

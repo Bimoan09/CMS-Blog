@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\Model;
 
 interface TagsCoreRepository
 {
-    public function getTags();
+    // public function getTags();
 
     public function storeTags($request);
 
