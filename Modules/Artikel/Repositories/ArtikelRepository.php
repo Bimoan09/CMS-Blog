@@ -76,6 +76,32 @@ class ArtikelRepository implements ArticleCoreRepository
          $storeData->tags()->sync((array)$request->input('tags'));
     }
 
+
+    public function storeArticleMember($request)
+    {
+         // Image upload Process
+         $reqImage = $request->file('featured_image');
+        
+         $fileName = Carbon::now()->timestamp. '-' . uniqid() . '.' . $reqImage->getClientOriginalName();
+         Image::make($reqImage)->resize(640,360)->save(storage_path('app/public/' . '/' . $fileName));
+ 
+         $storeData = $this->article->create([
+             'tittle'                    => $request->tittle,
+             'slug'                      => Str::slug($request->tittle),
+             'content'                   => $request->content,
+             'featured_image'            => $fileName,
+             'featuredimage_description' => $request->featuredimage_description,
+             'status'                    => 2,
+             'date_published'            => Carbon::now(),   
+             'category_id'               => $request->category_id,
+             'user_id'                   => auth()->user()->id,
+             'article_owner'             => 'member',
+         ]);
+
+          $storeData->tags()->sync((array)$request->input('tags'));
+     }
+    
+
     public function getCategory(CategoryRepository $category)
     {
         return $this->category->getCat();

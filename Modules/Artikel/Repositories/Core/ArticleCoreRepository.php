@@ -22,6 +22,8 @@ public function getCategory(CategoryRepository $category);
 
 public function storeArticleAdmin($request);
 
+public function storeArticleMember($request);
+
 public function getTagsline(TagsRepository $tags);
 
 public function getArticleMember();

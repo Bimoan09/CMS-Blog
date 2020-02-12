@@ -22,7 +22,7 @@ interface CategoryCoreRepositories
 
     public function storeCategory(array $request);
 
-    // public function edit($id);
+    public function detailCategory($id);
 
     public function deleteCategory($request);
 }

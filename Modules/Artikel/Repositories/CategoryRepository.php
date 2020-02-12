@@ -54,5 +54,12 @@ class CategoryRepository implements CategoryCoreRepositories
        
     }
 
+    public function detailCategory($id)
+    {
+        $details = $this->category->where('id', $id)->first();
+     
+        return $details;
+    }
+
 
 }

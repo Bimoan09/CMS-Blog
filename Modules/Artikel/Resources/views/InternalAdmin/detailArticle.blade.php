@@ -61,9 +61,12 @@
                 </div>
             </div>
         </div>
+
         <div class="text-center">
-            <button type="submit" class="btn btn-success btn-block btn-round"><i class="icon wb-menu"
+            @if($detail->status == 2)
+            <button type="submit" class="btn btn-warning btn-block btn-round"><i class="icon wb-menu"
                     aria-hidden="true"></i>Terbitkan Artikel</button>
+            @endif
         </div>
         <br>
     </div>

@@ -60,7 +60,8 @@
                                 <td>{{$value->articles_count}}</td>
                                 <td> <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
                                         data-toggle="tooltip" data-original-title="Rincian">
-                                        <a href="#" <i class="icon md-book" aria-hidden="true"></i></a>
+                                        <a href="{{route('admin.category.detail', $value->id)}}" <i class="icon md-book"
+                                            aria-hidden="true"></i></a>
                                     </button>
                                     <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
                                         data-toggle="tooltip" data-original-title="Ubah">
@@ -101,6 +102,7 @@
             'X-CSRF-TOKEN': '{{ csrf_token() }}'
         }
     });
+
     function deleteData(id) {
         var id = id;
         var url = '{{ route("admin.category.deleteCategory", ":id") }}';

@@ -56,7 +56,9 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        return view('artikel::show');
+        $data['detail'] = $this->repo->detailCategory($id);
+        $data['getRelatedArticle'] = $data['detail']->articles;
+        return view('artikel::internaladmin.detailCategory', $data);
     }
 
     /**

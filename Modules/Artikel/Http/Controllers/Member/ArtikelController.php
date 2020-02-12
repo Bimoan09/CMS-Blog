@@ -55,7 +55,7 @@ class ArtikelController extends Controller
     public function store(Request $request)
     {
         $storeData = $this->repo->storeArticleMember($request);
-        return back();
+        return back()->with('success', 'Artikel berhasil diupload, menunggu persetujuan editor');
     }
 
     /**
