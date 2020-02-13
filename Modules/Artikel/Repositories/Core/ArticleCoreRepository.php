@@ -36,6 +36,8 @@ public function updateArticleAdmin($request,$slug);
 
 public function updateArticleMember($request,$slug);
 
+public function approvedArticle($request,$slug);
+
 
 
 

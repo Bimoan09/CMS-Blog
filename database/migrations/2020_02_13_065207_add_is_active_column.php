@@ -15,7 +15,7 @@ class AddIsActiveColumn extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->integer('is_active')->after('user_type')->default(1);
-            $table->integer('point')->after('is_active');
+            $table->integer('point')->after('is_active')->default(0);
         });
     }
 

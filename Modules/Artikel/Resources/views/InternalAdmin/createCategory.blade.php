@@ -41,7 +41,7 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-xl-12 form-group">
-                            <label class="col-md-3 form-control-label">Terbitkan ke member</label>
+                            <label class="col-md-3Pweb form-control-label">Terbitkan ke member</label>
                             <select class="custom-select custom-select-lg mb-12" name="asigned">
                                 <option selected>Terbitkan ke member ?</option>
                                 <option value="1">Ya</option>

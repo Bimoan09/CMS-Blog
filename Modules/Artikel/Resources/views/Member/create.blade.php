@@ -37,6 +37,18 @@
                                 cols="10"></textarea>
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 form-control-label">Meta Description</label>
+                        <div class="col-md-9">
+                        <input type="text" class="form-control" name="meta_tag_description"  required />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 form-control-label">Meta Keyword</label>
+                        <div class="col-md-9">
+                        <input type="text" class="form-control" name="meta_tag_keyword"  required />
+                        </div>
+                    </div>
                     <!-- End Example Default -->
                     <div class="form-group row">
                         <label class="col-md-3 form-control-label">Kategori</label>

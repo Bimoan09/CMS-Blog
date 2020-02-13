@@ -11,6 +11,9 @@
 |
 */
 
-//  Route::get('/', function () {
-//      return view('news::index');
-//  });
+// Route::prefix('frontend')->group(function() {
+//     Route::get('/', 'FrontendController@index');
+// });
+
+Route::get('/', 'FrontendController@index');
+
