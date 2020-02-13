@@ -44,6 +44,8 @@ Route::group(['prefix' => 'admin' , 'middleware' => ['auth', 'AdminType']], func
     Route::get('/kategori/create', 'InternalAdmin\CategoryController@create')->name('admin.category.create');
     Route::get('/kategori/list', 'InternalAdmin\CategoryController@index')->name('admin.category.index');
     Route::get('/kategori/{id}', 'InternalAdmin\CategoryController@show')->name('admin.category.detail');
+    Route::get('/kategori/edit/{id}', 'InternalAdmin\CategoryController@edit')->name('admin.category.edit');
+    Route::put('/kategori/update/{id}', 'InternalAdmin\CategoryController@update')->name('admin.category.update');
 
     Route::delete('/kategori/delete/{id}', 'InternalAdmin\CategoryController@destroy')->name('admin.category.deleteCategory');
     Route::post('/kategori/post', 'InternalAdmin\CategoryController@store')->name('admin.category.store');

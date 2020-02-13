@@ -25,6 +25,8 @@ interface CategoryCoreRepositories
     public function detailCategory($id);
 
     public function deleteCategory($request);
+
+    public function updateCategory($request,$id);
 }
 
 

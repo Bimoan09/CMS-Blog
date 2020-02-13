@@ -43,6 +43,7 @@ class CategoryRepository implements CategoryCoreRepositories
             'slug'                  => $request->slug,
             'asigned'               => $request->asigned,
             'meta_tag_description'  => $request->meta_tag_description,
+            'user_id'               => auth()->user()->id,
         ]);
         
     }
@@ -59,6 +60,16 @@ class CategoryRepository implements CategoryCoreRepositories
         $details = $this->category->where('id', $id)->first();
      
         return $details;
+    }
+
+    public function updateCategory($request,$id)
+    {
+        $findCategory = $this->category->find($id);
+        $findCategory->name = $request->name;
+        $findCategory->meta_tag_description = $request->meta_tag_description;
+        $findCategory->asigned = $request->asigned;
+        $findCategory->user_id = auth()->user()->id;
+        $findCategory->update();
     }
 
 

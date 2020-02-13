@@ -65,7 +65,8 @@
                                     </button>
                                     <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
                                         data-toggle="tooltip" data-original-title="Ubah">
-                                        <a href="#" <i class="icon md-wrench" aria-hidden="true"></i></a>
+                                        <a href="{{route('admin.category.edit', $value->id)}}" <i class="icon md-wrench"
+                                            aria-hidden="true"></i></a>
                                     </button>
                                     {{-- <button type="button" class="delete-modal btn btn-sm btn-icon btn-pure btn-default"
                                         data-name="{{$value->name}}" data-toggle="tooltip" data-original-title="Hapus">

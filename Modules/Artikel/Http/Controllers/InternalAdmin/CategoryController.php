@@ -35,6 +35,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
+        $data['mode'] = 'create';
         return view('artikel::internaladmin.createCategory');
     }
 
@@ -68,7 +69,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        return view('artikel::edit');
+        $data['mode'] = 'edit';
+        $data['findCategory'] = $this->repo->detailCategory($id);
+        return view('artikel::internaladmin.createCategory', $data);
     }
 
     /**
@@ -79,7 +82,8 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $updateData = $this->repo->updateCategory($request,$id);
+        return redirect()->route('admin.category.index')->with('success', 'Kategori berhasil diupdate');
     }
 
     /**
