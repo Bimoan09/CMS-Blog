@@ -32,7 +32,9 @@ public function findArticle($slug);
 
 public function deleteArticle($request);
 
-public function updateArticle($request,$slug);
+public function updateArticleAdmin($request,$slug);
+
+public function updateArticleMember($request,$slug);
 
 
 

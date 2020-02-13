@@ -38,7 +38,7 @@ class BannerController extends Controller
      */
     public function create()
     {
-        
+        $data['mode'] = 'create';
         return view('artikel::Internaladmin.createBanner');
 
     }
@@ -71,7 +71,9 @@ class BannerController extends Controller
      */
     public function edit($id)
     {
-        return view('artikel::edit');
+        $data['mode'] = 'edit';
+        $data['findBanner'] = $this->repo->editBanner($id);
+        return view('artikel::Internaladmin.createBanner', $data);
     }
 
     /**
@@ -82,7 +84,8 @@ class BannerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $updateData = $this->repo->updateBanner($request,$id);
+        return redirect()->route('admin.banner.index')->with('success', 'Banner berhasil diupdate');
     }
 
     /**

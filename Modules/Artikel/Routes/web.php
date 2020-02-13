@@ -52,6 +52,8 @@ Route::group(['prefix' => 'admin' , 'middleware' => ['auth', 'AdminType']], func
     Route::get('/banner/create', 'InternalAdmin\BannerController@create')->name('admin.banner.create');
     Route::post('/banner/store', 'InternalAdmin\BannerController@store')->name('admin.banner.store');
     Route::get('/banner/list', 'InternalAdmin\BannerController@index')->name('admin.banner.index');
+    Route::get('/banner/{id}', 'InternalAdmin\BannerController@edit')->name('admin.banner.edit');
+    Route::put('/banner/update/{id}', 'InternalAdmin\BannerController@update')->name('admin.banner.update');
 
     //tags 
     Route::get('/tags/list', 'InternalAdmin\TagsController@index')->name('admin.tags.index');

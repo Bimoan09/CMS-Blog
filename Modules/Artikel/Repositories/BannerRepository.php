@@ -53,4 +53,25 @@ class BannerRepository implements BannerCoreRepository
         return $this->banners->find($request->id)->delete();
     }
 
+    public function editBanner($id)
+    {
+        return $this->banners->find($id);
+    }
+
+    public function updateBanner($request,$id)
+    {
+        $requestImage = $request->file('image');
+        $fileName = Carbon::now()->timestamp. '-' . uniqid() . '.' . $requestImage->getClientOriginalName();
+        Image::make($requestImage)->resize(340,340)->save(storage_path('app/public' . '/' . $fileName));
+
+        $findId = $this->banners->find($id);
+        $findId->file = $fileName;
+        $findId->name =$request->name;
+        $findId->description =$request->description;
+        $findId->location =$request->location;
+
+       $findId->update();
+    }
+
+
 }

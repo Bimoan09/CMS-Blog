@@ -25,15 +25,16 @@
                     <div class="form-group row">
                         <label class="col-md-3 form-control-label">Meta Description</label>
                         <div class="col-md-9">
-                        <input type="text" class="form-control" name="tittle" value="{{$findArticle ? $findArticle->tittle : old('tittle')}}" required />
+                        <input type="text" class="form-control" name="meta_tag_description" value="{{$findArticle ? $findArticle->meta_tag_description : old('meta_tag_description')}}" required />
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-3 form-control-label">Meta Keyword</label>
                         <div class="col-md-9">
-                        <input type="text" class="form-control" name="tittle" value="{{$findArticle ? $findArticle->tittle : old('tittle')}}" required />
+                        <input type="text" class="form-control" name="meta_tag_keyword" value="{{$findArticle ? $findArticle->meta_tag_keyword : old('meta_tag_keyword')}}" required />
                         </div>
                     </div>
+                  
                     <!-- Example Default -->
                     <div class="form-group row">
                         <label class="col-md-3 form-control-label">Gambar cover</label>

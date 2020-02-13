@@ -27,9 +27,6 @@ class ArtikelRepository implements ArticleCoreRepository
     // model property on class instances
     protected $article;
 
-    public $path;
-    public $dimensions;
-
     // Constructor to bind model to repo
     public function __construct(Article $article,CategoryRepository $category, TagsRepository $tags, User $user)
     {
@@ -56,21 +53,20 @@ class ArtikelRepository implements ArticleCoreRepository
 
         $request->validate([
             'tittle' => 'required|string|unique:articles|max:255',
-            'slug' => 'required|string|min:5',
             'meta_tag_keyword' => 'required|string',
             'meta_tag_description' => 'required|string|min:50',
             'featured_image' => 'required | mimes:jpeg,jpg,png | max:1000',
-            'focus_keyword' => 'required|string|unique:articles',
+            'featuredimage_description' => 'required|min:25',
             'category_id' => 'required',
-            'subcategory_id' => 'required',
-            'status' => 'required',
+            'content' => 'required',
 
          ],
          [
             'tittle.required' => 'Tittle wajib diisi',
             'meta_tag_keyword.required' => 'meta tittle wajib diisi' ,
             'meta_tag_description.required' => 'meta description minimal 50 karakter',
-            'focus_keyword.required' => 'Focus keyword Sudah digunakan, Silahkan gunakan Focus Keyword yang lain'
+            'featuredimage_description' => 'Deskipsi ini Gambar harus diisi',
+            'content.required'  => 'Konten tidak boleh kosong',
          ]);
      
         // Image upload Process
@@ -88,7 +84,6 @@ class ArtikelRepository implements ArticleCoreRepository
             'featured_image'            => $fileName,
             'featuredimage_description' => $request->featuredimage_description,
             'status'                    => 1,
-            'date_published'            => Carbon::now(),   
             'category_id'               => $request->category_id,
             'user_id'                   => auth()->user()->id,
             'article_owner'             => 'internaladmin',
@@ -99,6 +94,25 @@ class ArtikelRepository implements ArticleCoreRepository
 
     public function storeArticleMember($request)
     {
+
+        $request->validate([
+            'tittle' => 'required|string|unique:articles|max:255',
+            'meta_tag_keyword' => 'required|string',
+            'meta_tag_description' => 'required|string|min:50',
+            'featured_image' => 'required | mimes:jpeg,jpg,png | max:1000',
+            'featuredimage_description' => 'required|min:25',
+            'category_id' => 'required',
+            'content' => 'required',
+
+         ],
+         [
+            'tittle.required' => 'Tittle wajib diisi',
+            'meta_tag_keyword.required' => 'meta tittle wajib diisi' ,
+            'meta_tag_description.required' => 'meta description minimal 50 karakter',
+            'featuredimage_description' => 'Deskipsi ini Gambar harus diisi',
+            'content.required'  => 'Konten tidak boleh kosong',
+         ]);
+
          // Image upload Process
          $reqImage = $request->file('featured_image');
         
@@ -108,11 +122,12 @@ class ArtikelRepository implements ArticleCoreRepository
          $storeData = $this->article->create([
              'tittle'                    => $request->tittle,
              'slug'                      => Str::slug($request->tittle),
+             'meta_tag_keyword'          => $request->meta_tag_description,
+             'meta_tag_keyword'          => $request->meta_tag_keyword,
              'content'                   => $request->content,
              'featured_image'            => $fileName,
              'featuredimage_description' => $request->featuredimage_description,
              'status'                    => 2,
-             'date_published'            => Carbon::now(),   
              'category_id'               => $request->category_id,
              'user_id'                   => auth()->user()->id,
              'article_owner'             => 'member',
@@ -158,8 +173,27 @@ class ArtikelRepository implements ArticleCoreRepository
         return $this->article->find($request->id)->delete();
     }
 
-    public function updateArticle($request,$slug)
+    public function updateArticleAdmin($request,$slug)
     {
+
+        $request->validate([
+            'tittle' => 'required|string|unique:articles|max:255',
+            'meta_tag_keyword' => 'required|string',
+            'meta_tag_description' => 'required|string|min:50',
+            'featured_image' => 'required | mimes:jpeg,jpg,png | max:1000',
+            'featuredimage_description' => 'required|min:25',
+            'category_id' => 'required',
+            'content' => 'required',
+
+         ],
+         [
+            'tittle.required' => 'Tittle wajib diisi',
+            'meta_tag_keyword.required' => 'meta tittle wajib diisi' ,
+            'meta_tag_description.required' => 'meta description minimal 50 karakter',
+            'featuredimage_description' => 'Deskipsi ini Gambar harus diisi',
+            'content.required'  => 'Konten tidak boleh kosong',
+         ]);
+
         $find = $this->article->where('slug', $slug)->first();
         $image = $request->file('featured_image');
         
@@ -168,6 +202,8 @@ class ArtikelRepository implements ArticleCoreRepository
         $find->featured_image = $fileName;
         $find->tittle = $request->tittle;
         $find->slug = Str::slug($request->tittle);
+        $find->meta_tag_keyword = $request->meta_tag_keyword;
+        $find->meta_tag_description = $request->meta_tag_description;
         $find->content =$request->content;
         $find->featuredimage_description =$request->featuredimage_description;
         $find->status = 1;
@@ -175,19 +211,49 @@ class ArtikelRepository implements ArticleCoreRepository
         $find->user_id = auth()->user()->id;
         $find->article_owner = 'internaladmin';
         $find->save();
+
+      
+    }
+
+    public function updateArticleMember($request,$slug)
+    {
+
+        $request->validate([
+            'tittle' => 'required|string|unique:articles|max:255',
+            'meta_tag_keyword' => 'required|string',
+            'meta_tag_description' => 'required|string|min:50',
+            'featured_image' => 'required | mimes:jpeg,jpg,png | max:1000',
+            'featuredimage_description' => 'required|min:25',
+            'category_id' => 'required',
+            'content' => 'required',
+
+         ],
+         [
+            'tittle.required' => 'Tittle wajib diisi',
+            'meta_tag_keyword.required' => 'meta tittle wajib diisi' ,
+            'meta_tag_description.required' => 'meta description minimal 50 karakter',
+            'featuredimage_description' => 'Deskipsi ini Gambar harus diisi',
+            'content.required'  => 'Konten tidak boleh kosong',
+         ]);
+
+        $find = $this->article->where('slug', $slug)->first();
+        $image = $request->file('featured_image');
+        
+        $fileName = Carbon::now()->timestamp. '-' . uniqid() . '.' . $image->getClientOriginalName();
+        Image::make($image)->resize(640,360)->save(storage_path('app/public/' . '/' . $fileName));
+        $find->featured_image = $fileName;
+        $find->tittle = $request->tittle;
+        $find->slug = Str::slug($request->tittle);
+        $find->meta_tag_keyword = $request->meta_tag_keyword;
+        $find->meta_tag_description = $request->meta_tag_description;
+        $find->content =$request->content;
+        $find->featuredimage_description =$request->featuredimage_description;
+        $find->status = 1;
+        $find->category_id = $request->category_id;
+        $find->user_id = auth()->user()->id;
+        $find->article_owner = 'member';
+        $find->save();
     
-        // $update = $this->article->save([
-        //     'tittle'                    => $request->tittle,
-        //     'slug'                      => Str::slug($request->tittle),
-        //     'content'                   => $request->content,
-        //     'featured_image'            => $fileName,
-        //     'featuredimage_description' => $request->featuredimage_description,
-        //     'status'                    => 2,
-        //     'date_published'            => Carbon::now(),   
-        //     'category_id'               => $request->category_id,
-        //     'user_id'                   => auth()->user()->id,
-        //     'article_owner'             => 'member',
-        // ]);
       
     }
 

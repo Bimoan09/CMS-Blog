@@ -19,6 +19,10 @@ interface BannerCoreRepository
 
     public function deleteBanner($request);
 
+    public function editBanner($id);
+
+    public function updateBanner($request,$id);
+
   
 }
 
