@@ -22,6 +22,8 @@
             </div>
         </div>
 
+        @include('masterfrontend::partials.alert')
+
         <div class="page-content">
 
             <!-- Panel Table Individual column searching -->
@@ -77,18 +79,17 @@
                                 </td>
                                 <td> <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
                                         data-toggle="tooltip" data-original-title="Rincian">
-                                        <a href="{{route('admin.artikel.detail', Str::slug($value->tittle))}}" <i class="icon md-book"
-                                            aria-hidden="true"></i></a>
+                                        <a href="{{route('admin.artikel.detail', Str::slug($value->tittle))}}" <i
+                                            class="icon md-book" aria-hidden="true"></i></a>
                                     </button>
                                     <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
                                         data-toggle="tooltip" data-original-title="Ubah">
-                                        <a href="{{route('member.artikel.edit')}}" <i class="icon md-wrench"
+                                        <a href="{{route('admin.artikel.edit', $value->slug)}}" <i class="icon md-wrench"
                                             aria-hidden="true"></i></a>
                                     </button>
-                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
-                                        data-toggle="tooltip" data-original-title="Hapus">
-                                        <i class="icon md-close" aria-hidden="true"></i>
-                                    </button>
+                                    <a href="javascript:;" data-toggle="modal" onclick="deleteData({{$value->id}})"
+                                        data-target="#DeleteModal" class="btn btn-xs btn-danger"><i
+                                            class="fa fa-trash"></i>Hapus</a>
                                 </td>
                             </tr>
                             @endforeach
@@ -105,4 +106,27 @@
     </div>
     <!-- End Page -->
 </body>
+@endsection
+
+
+@section('javascript')
+<script src="{{asset('assets/remark/global/vendor/jquery/jquery.js')}}"></script>
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        }
+    });
+
+    function deleteData(id) {
+        var id = id;
+        var url = '{{ route("admin.artikel.delete", ":id") }}';
+        url = url.replace(':id', id);
+        $("#deleteForm").attr('action', url);
+    }
+
+    function formSubmit() {
+        $("#deleteForm").submit();
+    }
+</script>
 @endsection

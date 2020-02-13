@@ -30,6 +30,12 @@ public function getArticleMember();
 
 public function findArticle($slug);
 
+public function deleteArticle($request);
+
+public function updateArticle($request,$slug);
+
+
+
 
 // public function edit($id);
 

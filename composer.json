@@ -11,6 +11,7 @@
         "php": "7.2.*",
         "ckfinder/ckfinder-laravel-package": "v3.5.1.2",
         "csanquer/pdo-service-provider": "~1.1dev",
+        "doctrine/dbal": "^2.10",
         "fideloper/proxy": "^4.0",
         "fzaninotto/faker": "^1.8",
         "intervention/image": "^2.5",

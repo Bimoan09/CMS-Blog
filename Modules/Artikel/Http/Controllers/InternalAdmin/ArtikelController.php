@@ -49,6 +49,8 @@ class ArtikelController extends Controller
      */
     public function create(CategoryRepository $category, TagsRepository $tags)
     {
+        $data['mode'] = 'create';
+        $data['findArticle'] = [];
         $data['getCategory'] = $this->repo->getCategory($category);
         $data['getTags'] = $this->repo->getTagsline($tags);
         return view('artikel::Internaladmin.createArticle', $data);
@@ -81,9 +83,13 @@ class ArtikelController extends Controller
      * @param int $id
      * @return Response
      */
-    public function edit($id)
+    public function edit($slug, CategoryRepository $category , TagsRepository $tags)
     {
-        return view('artikel::edit');
+        $data['mode'] = 'edit';
+        $data['findArticle'] =$this->repo->findArticle($slug);
+        $data['getCategory'] = $this->repo->getCategory($category);
+        $data['getTags'] = $this->repo->getTagsline($tags);
+        return view('artikel::Internaladmin.createArticle', $data);
     }
 
     /**
@@ -92,9 +98,11 @@ class ArtikelController extends Controller
      * @param int $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $slug)
     {
-        //
+        $updateData = $this->repo->updateArticle($request,$slug);
+  
+        return redirect()->route('admin.artikel.index')->with('success', 'Artikel berhasil diupdate');
     }
 
     /**
@@ -102,8 +110,9 @@ class ArtikelController extends Controller
      * @param int $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $data['deleteArticle'] = $this->repo->deleteArticle($request);
+        return back()->with('failed', 'Article berhasil dihapus');
     }
 }

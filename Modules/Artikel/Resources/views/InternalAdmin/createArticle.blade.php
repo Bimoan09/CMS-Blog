@@ -10,15 +10,28 @@
         <!-- Panel Summary Mode -->
         <div class="panel">
             <div class="panel-heading">
-                <h3 class="panel-title">Buat Artikel</h3>
+                <h3 class="panel-title">{{$mode == 'create' ?'Tambah baru' : 'Edit Data'}}</h3>
             </div>
             <div class="panel-body">
-                <form action="{{route('admin.artikel.store')}}" method="POST" class="form-horizontal" autocomplete="on" enctype="multipart/form-data">
+                <form action="{{$mode== 'create' ?route('admin.artikel.store'):route('admin.artikel.update', $findArticle->slug)}}" method="POST" class="form-horizontal" autocomplete="on" enctype="multipart/form-data">
                     {{ csrf_field() }}
+                    {{ $mode=='edit'? method_field('PUT'):'' }}
                     <div class="form-group row">
                         <label class="col-md-3 form-control-label">Judul</label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" name="tittle" required />
+                        <input type="text" class="form-control" name="tittle" value="{{$findArticle ? $findArticle->tittle : old('tittle')}}" required />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 form-control-label">Meta Description</label>
+                        <div class="col-md-9">
+                        <input type="text" class="form-control" name="tittle" value="{{$findArticle ? $findArticle->tittle : old('tittle')}}" required />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 form-control-label">Meta Keyword</label>
+                        <div class="col-md-9">
+                        <input type="text" class="form-control" name="tittle" value="{{$findArticle ? $findArticle->tittle : old('tittle')}}" required />
                         </div>
                     </div>
                     <!-- Example Default -->
@@ -34,7 +47,7 @@
                     <div class="form-group row">
                         <label class="col-md-3 form-control-label">Deskripsi Gambar cover</label>
                         <div class="col-md-9">
-                            <textarea class="form-control" name="featuredimage_description" rows="5" cols="5"></textarea>
+                            <textarea class="form-control" name="featuredimage_description"  rows="5" cols="5">{{$findArticle ? $findArticle->featuredimage_description : old('featuredimage_description')}}</textarea>
                         </div>
                     </div>
 
@@ -66,7 +79,7 @@
                     <div class="form-group row">
                         <label class="col-md-3 form-control-label">Konten</label>
                         <div class="col-md-9">
-                            <textarea id="konten" class="form-control" name="content" rows="30" cols="30"></textarea>
+                            <textarea id="konten" class="form-control" name="content" rows="30" cols="30">{{$findArticle ? $findArticle->content : old('content')}}</textarea>
                         </div>
                     </div>
                     <div class="text-center">

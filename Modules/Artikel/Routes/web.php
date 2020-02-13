@@ -33,8 +33,13 @@ Route::group(['prefix' => 'admin' , 'middleware' => ['auth', 'AdminType']], func
     Route::get('/artikel/list', 'InternalAdmin\ArtikelController@index')->name('admin.artikel.index');
     Route::get('/artikel/member/list', 'InternalAdmin\ArtikelController@indexArticleMember')->name('admin.artikel.indexMember');
     Route::get('/artikel/create', 'InternalAdmin\ArtikelController@create')->name('admin.artikel.create');
-    Route::get('/artikel/{tittle}', 'InternalAdmin\ArtikelController@show')->name('admin.artikel.detail');
+    Route::get('/artikel/{slug}', 'InternalAdmin\ArtikelController@show')->name('admin.artikel.detail');
     Route::post('/artikel/post', 'InternalAdmin\ArtikelController@store')->name('admin.artikel.store');
+    Route::put('/artikel/update/{slug}', 'InternalAdmin\ArtikelController@update')->name('admin.artikel.update');
+    Route::get('/artikel/edit/{slug}', 'InternalAdmin\ArtikelController@edit')->name('admin.artikel.edit');
+
+    Route::delete('/artikel/delete/{id}', 'InternalAdmin\ArtikelController@destroy')->name('admin.artikel.delete');
+
     //kategori
     Route::get('/kategori/create', 'InternalAdmin\CategoryController@create')->name('admin.category.create');
     Route::get('/kategori/list', 'InternalAdmin\CategoryController@index')->name('admin.category.index');
