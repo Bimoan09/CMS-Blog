@@ -58,10 +58,7 @@
                                 <td> <img src="{{asset('storage/' . $value->file)}}" width="20%" height="20%" /></td>
                                 <td>{{$value->description}}</td>
                                 <td>{{$value->location}}</td>
-                                <td> <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
-                                        data-toggle="tooltip" data-original-title="Rincian">
-                                        <a href="#" <i class="icon md-book" aria-hidden="true"></i></a>
-                                    </button>
+                                <td>
                                     <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
                                         data-toggle="tooltip" data-original-title="Ubah">
                                         <a href="{{route('admin.banner.edit', $value->id)}}" <i class="icon md-wrench"
