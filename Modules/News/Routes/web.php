@@ -11,6 +11,6 @@
 |
 */
 
- Route::get('/', function () {
-     return view('news::index');
- });
+//  Route::get('/', function () {
+//      return view('news::index');
+//  });

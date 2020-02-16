@@ -17,7 +17,7 @@ class MemberController extends Controller
     public function index()
     {
         
-        return view('member::timeline.index');
+        return view('member::Timeline.index');
     }
 
     /**
@@ -27,7 +27,7 @@ class MemberController extends Controller
     public function profile($name)
     {   
         $name = Str::slug(Auth::user()->name);
-        return view('member::profile.profile', compact('name'));
+        return view('member::Profile.profile', compact('name'));
     }
 
     /**

@@ -5,16 +5,28 @@ namespace Modules\Artikel\Http\Controllers\InternalAdmin;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Modules\Artikel\Repositories\CategoryRepository;
 
 class CategoryController extends Controller
 {
+
+    protected $model;
+
+
+    public function __construct(CategoryRepository $repo)
+    {
+        // set the model
+        $this->repo = $repo;
+    }
+
     /**
      * Display a listing of the resource.
      * @return Response
      */
-    public function index()
+    public function index(CategoryRepository $category)
     {
-        return view('artikel::internaladmin.indexCategory');
+        $data['getCategory'] = $this->repo->getCat($category);
+        return view('artikel::internaladmin.indexCategory', $data);
     }
 
     /**
@@ -23,6 +35,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
+        $data['mode'] = 'create';
         return view('artikel::internaladmin.createCategory');
     }
 
@@ -33,7 +46,8 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $insert = $this->repo->storeCategory($request);
+        return back()->with('success', 'Kategori berhasil dibuat');
     }
 
     /**
@@ -43,7 +57,9 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        return view('artikel::show');
+        $data['detail'] = $this->repo->detailCategory($id);
+        $data['getRelatedArticle'] = $data['detail']->articles;
+        return view('artikel::internaladmin.detailCategory', $data);
     }
 
     /**
@@ -53,7 +69,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        return view('artikel::edit');
+        $data['mode'] = 'edit';
+        $data['findCategory'] = $this->repo->detailCategory($id);
+        return view('artikel::internaladmin.createCategory', $data);
     }
 
     /**
@@ -64,7 +82,8 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $updateData = $this->repo->updateCategory($request,$id);
+        return redirect()->route('admin.category.index')->with('success', 'Kategori berhasil diupdate');
     }
 
     /**
@@ -72,8 +91,11 @@ class CategoryController extends Controller
      * @param int $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+       $data['deleteAjax'] =  $this->repo->deleteCategory($request);
+       return back()->with('failed', 'Kategori berhasil dihapus');
     }
+
+    
 }

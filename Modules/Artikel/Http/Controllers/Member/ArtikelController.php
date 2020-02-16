@@ -7,8 +7,12 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Artikel\Repositories\ArtikelRepository;
 use Modules\Artikel\Repositories\CategoryRepository;
+use Modules\Artikel\Repositories\TagsRepository;
 use Modules\Artikel\Entities\Article;
-
+use Modules\Artikel\Entities\Category;
+use Modules\Artikel\Entities\Tags;
+use Cache;
+use DB;
 
 class ArtikelController extends Controller
 {
@@ -28,18 +32,19 @@ class ArtikelController extends Controller
      */
     public function index()
     {
-        $article = $this->repo->getArticle();
-        return view('artikel::member.index');
+        $article = $this->repo->getArticleMember();
+        return view('artikel::Member.index');
     }
 
     /**
      * Show the form for creating a new resource.
      * @return Response
      */
-    public function create(CategoryRepository $category)
+    public function create(CategoryRepository $category, TagsRepository $tags)
     {
-        $getCategory = $this->repo->getCategory($category);
-        return view('artikel::member.create', compact('getCategory'));
+        $data['getCategory'] = $this->repo->getCategory($category);
+        $data['getTags'] = $this->repo->getTagsline($tags);
+        return view('artikel::Member.create', $data);
     }
 
     /**
@@ -49,8 +54,8 @@ class ArtikelController extends Controller
      */
     public function store(Request $request)
     {
-        $storeData = $this->repo->storeArticle($request);
-        return back();
+        $storeData = $this->repo->storeArticleMember($request);
+        return back()->with('success', 'Artikel berhasil diupload, menunggu persetujuan editor');
     }
 
     /**
@@ -60,7 +65,7 @@ class ArtikelController extends Controller
      */
     public function show($id=1)
     {
-        return view('artikel::member.detail');
+        return view('artikel::Member.detail');
     }
 
     /**
@@ -93,4 +98,34 @@ class ArtikelController extends Controller
     {
         //
     }
+
+    public function getImage()
+    {
+        $article = Article::select('featured_image')->get();
+        return view('welcome', compact('article'));
+    }
+
+    // public function testingData($slug)
+    // {
+        
+    //     $data  = Category::where('slug', $slug)->first();
+    //     $relations = $data->articles;
+    //     // $data = \DB::table('articles')->where('category_id', $id)->get();
+        
+    //     return view('artikel::member.testing', compact('data', 'relations'));
+    // }
+
+
+    // public function getCache()
+    // {
+
+    //       DB::connection()->enableQueryLog();
+
+       
+    //     $value = Cache::remember('tags_table', 60, function () {
+    //         return DB::table('tags')->get();
+    //     });
+    //     $log = DB::getQueryLog();
+    //     print_r($log);
+    // }
 }

@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Banner extends Model
 {
     protected $table = 'banners';
-    protected $fillable = ['file', 'location'];
+    protected $fillable = ['name', 'file', 'location', 'description'];
 }

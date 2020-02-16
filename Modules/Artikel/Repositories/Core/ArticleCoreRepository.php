@@ -11,6 +11,7 @@
 use Illuminate\Http\Request;
 namespace Modules\Artikel\Repositories\Core;
 use Modules\Artikel\Repositories\CategoryRepository;
+use Modules\Artikel\Repositories\TagsRepository;
 
 interface ArticleCoreRepository
  {
@@ -19,7 +20,26 @@ public function get();
 
 public function getCategory(CategoryRepository $category);
 
-public function storeArticle($request);
+public function storeArticleAdmin($request);
+
+public function storeArticleMember($request);
+
+public function getTagsline(TagsRepository $tags);
+
+public function getArticleMember();
+
+public function findArticle($slug);
+
+public function deleteArticle($request);
+
+public function updateArticleAdmin($request,$slug);
+
+public function updateArticleMember($request,$slug);
+
+public function approvedArticle($request,$slug);
+
+
+
 
 // public function edit($id);
 

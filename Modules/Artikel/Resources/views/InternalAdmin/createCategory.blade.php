@@ -1,6 +1,10 @@
 @extends('masterfrontend::layouts.main')
 
-@section('title', 'Buat Artikel')
+@if($mode =='create')
+@section('title', 'Buat Kategori')
+@elseif($mode =='edit')
+@section('title', 'Edit Kategori')
+@endif
 
 @section('content')
 
@@ -10,21 +14,40 @@
         <!-- Panel Summary Mode -->
         <div class="panel">
             <div class="panel-heading">
-                <h3 class="panel-title">Buat Kategori</h3>
+                <h3 class="panel-title">{{$mode == 'create' ?'Tambah baru' : 'Edit Data'}}</h3>
             </div>
             <div class="panel-body">
-                <form class="form-horizontal" id="exampleSummaryForm" autocomplete="off">
+            <form action="{{$mode=='create' ?route('admin.category.store'):route('admin.category.update', $findCategory->id)}}" method="POST" class="form-horizontal" id="exampleSummaryForm" autocomplete="on">
+                {{ csrf_field() }}
+                {{ $mode=='edit'? method_field('PUT'):'' }}
                     <div class="form-group row">
                         <label class="col-md-3 form-control-label">kategori</label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" name="category" required/>
+                            <input type="text" class="form-control" name="name"  value="{{$findCategory ? $findCategory->name : old('name')}}" required/>
                         </div>
                     </div>
-                    <!-- Example Default -->
                     <div class="form-group row">
-                        <label class="col-md-3 form-control-label">Deskripsi</label>
+                        <label class="col-md-3 form-control-label">Meta Description</label>
                         <div class="col-md-9">
-                            <textarea id="konten" class="form-control" name="konten" rows="30" cols="30"></textarea>
+                            <input type="text" class="form-control" name="meta_tag_description"  value="{{$findCategory ? $findCategory->meta_tag_description : old('meta_tag_description')}}" required/>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-3 form-control-label">Slug</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" name="slug"  value="{{$findCategory ? $findCategory->slug : old('slug')}}" required/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xl-12 form-group">
+                            <label class="col-md-3Pweb form-control-label">Terbitkan ke member</label>
+                            <select class="custom-select custom-select-lg mb-12" name="asigned">
+                                <option selected>Terbitkan ke member ?</option>
+                                <option value="1">Ya</option>
+                                <option value="2">Tidak</option>
+
+                            </select>
                         </div>
                     </div>
                     <div class="text-center">

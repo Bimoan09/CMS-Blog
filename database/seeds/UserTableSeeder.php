@@ -12,16 +12,26 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create();
-        foreach(range(0,10) as $i){
+        // $faker = Faker::create();
+     
             DB::table('users')->insert([
-                'name' => $faker->name,
-                'email' => $faker->email,
-                'username' => $faker->userName,
+                'name' => 'bian',
+                'email' => 'bian@gmail.com',
+                'username' => 'bianpras',
                 'password' => bcrypt('rahasia'),
                 'user_type' => 'member',
                 'token' => 'qwerty',
             ]);
-        }
+
+            
+            DB::table('users')->insert([
+                'name' => 'astri',
+                'email' => 'astri@gmail.com',
+                'username' => 'astrimawar',
+                'password' => bcrypt('rahasia'),
+                'user_type' => 'internaladmin',
+                'token' => 'qwerty',
+            ]);
+        
     }
 }

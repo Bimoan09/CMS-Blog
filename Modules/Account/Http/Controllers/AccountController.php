@@ -51,7 +51,7 @@ class AccountController extends Controller
                 return redirect()->route('member.home');
         }
     }
-        return back()->with('failed', 'Password salah, cek kembali');
+        return "salah";
     }
 
     /**

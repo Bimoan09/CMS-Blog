@@ -22,6 +22,8 @@
             </div>
         </div>
 
+        @include('masterfrontend::partials.alert')
+
         <div class="page-content">
 
             <!-- Panel Table Individual column searching -->
@@ -36,6 +38,7 @@
                                 <th>No</th>
                                 <th>Judul</th>
                                 <th>Kategori</th>
+                                {{-- <th>Tags</th> --}}
                                 <th>Jumlah Pembaca</th>
                                 <th>Penulis</th>
                                 <th>Status</th>
@@ -43,10 +46,12 @@
                             </tr>
                         </thead>
                         <tfoot>
+
                             <tr>
                                 <th>No</th>
                                 <th>Judul</th>
                                 <th>Kategori</th>
+                                {{-- <th>Tags</th> --}}
                                 <th>Jumlah Pembaca</th>
                                 <th>Penulis</th>
                                 <th>Status</th>
@@ -54,76 +59,41 @@
                             </tr>
                         </tfoot>
                         <tbody>
+                            @foreach($articleAdmin as $value)
                             <tr>
-                                <td>1</td>
-                                <td>Belajar Laravel</td>
-                                <td>Programming</td>
+                                <td>{{$loop->iteration}}</td>
+                                <td>{{$value->tittle}}</td>
+                                <td>{{$value->category->name}}</td>
+
                                 <td>26</td>
-                                <td><a href="http://example.com">Abdullah</a>
-                                  </td>
-                                <td> <span class="badge badge-warning">Review</span></td>
+                                <td><a href="http://example.com">{{$value->users->name}}</a>
+                                </td>
+                                <td>
+                                    @if($value->status == 1)
+                                    <span class="badge badge-success">Terbit</span>
+                                    @elseif($value->status == 2)
+                                    <span class="badge badge-warning">Pending</span>
+                                    @elseif($value->status == 3)
+                                    <span class="badge badge-danger">Reject</span>
+                                    @endif
+                                </td>
                                 <td> <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
                                         data-toggle="tooltip" data-original-title="Rincian">
-                                        <a href="{{route('member.artikel.show')}}" <i class="icon md-book"
-                                            aria-hidden="true"></i></a>
+                                        <a href="{{route('admin.artikel.detail', Str::slug($value->tittle))}}" <i
+                                            class="icon md-book" aria-hidden="true"></i></a>
                                     </button>
                                     <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
                                         data-toggle="tooltip" data-original-title="Ubah">
-                                        <a href="{{route('member.artikel.edit')}}" <i class="icon md-wrench"
+                                        <a href="{{route('admin.artikel.edit', $value->slug)}}" <i class="icon md-wrench"
                                             aria-hidden="true"></i></a>
                                     </button>
-                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
-                                        data-toggle="tooltip" data-original-title="Hapus">
-                                        <i class="icon md-close" aria-hidden="true"></i>
-                                    </button>
+                                    <a href="javascript:;" data-toggle="modal" onclick="deleteData({{$value->id}})"
+                                        data-target="#DeleteModal" class="btn btn-xs btn-danger"><i
+                                            class="fa fa-trash"></i>Hapus</a>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Design pattern laravel</td>
-                                <td>Programming</td>
-                                <td>12</td>
-                                <td><a href="http://example.com">Tukimin</a>
-                                <td> <span class="badge badge-success">Terbit</span></td>
-                                <td> <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
-                                        data-toggle="tooltip" data-original-title="Rincian">
-                                        <a href="{{route('member.artikel.show')}}" <i class="icon md-book"
-                                            aria-hidden="true"></i></a>
-                                    </button>
-                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
-                                        data-toggle="tooltip" data-original-title="Ubah">
-                                        <a href="{{route('member.artikel.edit')}}" <i class="icon md-wrench"
-                                            aria-hidden="true"></i></a>
-                                    </button>
-                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
-                                        data-toggle="tooltip" data-original-title="Hapus">
-                                        <i class="icon md-close" aria-hidden="true"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Install Laravel</td>
-                                <td>Programming</td>
-                                <td>26</td>
-                                <td><a href="http://example.com">Jajang</a>
-                                <td> <span class="badge badge-primary">Review</span></td>
-                                <td> <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
-                                        data-toggle="tooltip" data-original-title="Rincian">
-                                        <a href="{{route('member.artikel.show')}}" <i class="icon md-book"
-                                            aria-hidden="true"></i></a>
-                                    </button>
-                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
-                                        data-toggle="tooltip" data-original-title="Ubah">
-                                        <a href="{{route('member.artikel.edit')}}" <i class="icon md-wrench"
-                                            aria-hidden="true"></i></a>
-                                    </button>
-                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
-                                        data-toggle="tooltip" data-original-title="Hapus">
-                                        <i class="icon md-close" aria-hidden="true"></i>
-                                    </button>
-                                </td>
-                            </tr>
+                            @endforeach
+
 
 
                         </tbody>
@@ -136,4 +106,27 @@
     </div>
     <!-- End Page -->
 </body>
+@endsection
+
+
+@section('javascript')
+<script src="{{asset('assets/remark/global/vendor/jquery/jquery.js')}}"></script>
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        }
+    });
+
+    function deleteData(id) {
+        var id = id;
+        var url = '{{ route("admin.artikel.delete", ":id") }}';
+        url = url.replace(':id', id);
+        $("#deleteForm").attr('action', url);
+    }
+
+    function formSubmit() {
+        $("#deleteForm").submit();
+    }
+</script>
 @endsection

@@ -9,20 +9,26 @@
 
 
 namespace Modules\Artikel\Repositories\Core;
+use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Model;
 
 interface CategoryCoreRepositories
 {
     public function getCat();
 
-    // public function create(array $data);
+    // public function getCountArticle();
 
     // public function update($id, array $data);
 
-    // public function store(array $data);
+    public function storeCategory(array $request);
 
-    // public function edit($id);
+    public function detailCategory($id);
 
-    // public function delete($id);
+    public function deleteCategory($request);
+
+    public function updateCategory($request,$id);
+
+    public function detailCategoryFrontend($slug);
 }
 
 

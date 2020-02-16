@@ -19,9 +19,7 @@
             <link rel="apple-touch-icon" href="assets/img/favicons/apple-touch-icon.png" />
             <link rel="icon" href="assets/img/favicons/favicon.ico" />
 
-            <!-- Google fonts -->
-            <link rel="stylesheet"
-                href="http://fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,900%7CRoboto+Slab:300,400%7CRoboto+Mono:400" />
+
 
 
             <!--Remark template -->
@@ -49,6 +47,7 @@
             <link rel="stylesheet" href="{{asset('assets/remark/global/vendor/dropify/dropify.css')}}">
             <link rel="stylesheet" href="{{asset('assets/remark/assets/examples/css/apps/documents.css')}}">
             <link rel="stylesheet" href="{{asset('assets/remark/global/vendor/waves/waves.css')}}">
+            <link rel="stylesheet" href="{{asset('assets/remark/assets/examples/css/uikit/modals.css')}}">
             <!-- End Remark template -->
 
 
@@ -80,6 +79,7 @@
         {{-- @include('masterfrontend::layouts.sidenav') --}}
 
         @include('masterfrontend::layouts.header')
+        @include('masterfrontend::layouts.modal')
 
         <main class="app-layout-content">
             @yield('content')
@@ -89,7 +89,7 @@
 
         @yield('javascript')
 
-        <script src="{{asset('assets/remark/global/vendor/jquery/jquery.js')}}"></script>
+         <script src="{{asset('assets/remark/global/vendor/jquery/jquery.js')}}"></script> 
         <script src="{{asset('assets/remark/global/vendor/babel-external-helpers/babel-external-helpers.js')}}">
         </script>
 
@@ -99,11 +99,9 @@
         <script src="{{asset('assets/remark/global/vendor/mousewheel/jquery.mousewheel.js')}}"></script>
 
         <!-- Page plugin -->
-        <script src="{{asset('assets/remark/global/vendor/switchery/switchery.js')}}"></script>
-        <script src="{{asset('assets/remark/global/vendor/intro-js/intro.js')}}"></script>
-        <script src="{{asset('assets/remark/global/vendor/screenfull/screenfull.js')}}"></script>
+        {{-- <script src="{{asset('assets/remark/global/vendor/switchery/switchery.js')}}"></script>
+        <script src="{{asset('assets/remark/global/vendor/intro-js/intro.js')}}"></script> --}}
         <script src="{{asset('assets/remark/global/vendor/slidepanel/jquery-slidePanel.js')}}"></script>
-        <script src="{{asset('assets/remark/global/vendor/chartist/chartist.min.js')}}"></script>
         <script src="{{asset('assets/remark/global/vendor/matchheight/jquery.matchHeight-min.js')}}"></script>
 
         <script src="{{asset('assets/remark/global/js/Component.js')}}"></script>
@@ -124,6 +122,7 @@
         <script src="{{asset('assets/remark/global/vendor/dropify/dropify.min.js')}}"></script>
         <script src="{{asset('assets/remark/global/vendor/bootstrap-select/bootstrap-select.js')}}"></script>
         <script src="{{asset('assets/remark/global/vendor/waves/waves.js')}}"></script>
+  
         
         <!-- Datatables -->
         <script src="{{asset('assets/remark/global/vendor/datatables.net/jquery.dataTables.js')}}"></script>
