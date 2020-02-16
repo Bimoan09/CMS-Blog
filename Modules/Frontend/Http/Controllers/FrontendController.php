@@ -18,7 +18,7 @@ class FrontendController extends Controller
     protected $model;
 
 
-    public function __construct(ArtikelRepository $repo)
+    public function __construct(CategoryRepository $repo)
     {
         // set the model
         $this->repo = $repo;
@@ -30,7 +30,7 @@ class FrontendController extends Controller
      */
     public function index(CategoryRepository $category)
     {
-        $data['getCategory'] = $this->repo->getCategory($category);
+        $data['getCategory'] = $this->repo->getCat($category);
         return view('frontend::Timeline.beranda', $data);
     }
 
@@ -39,7 +39,7 @@ class FrontendController extends Controller
      {
          $data['getCategory'] = $this->repo->detailCategoryFrontend($slug);
          $data['getRelatedArticle'] = $data['getCategory']->articles;
-         return view('frontend::Timeline.beranda', $data);
+         return view('frontend::Timeline.articleList', $data);
      }
     
 
