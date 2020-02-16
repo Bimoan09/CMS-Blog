@@ -38,6 +38,8 @@ public function updateArticleMember($request,$slug);
 
 public function approvedArticle($request,$slug);
 
+public function visitorArticleViews($slug);
+
 
 
 

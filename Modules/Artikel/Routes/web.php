@@ -37,6 +37,7 @@ Route::group(['prefix' => 'admin' , 'middleware' => ['auth', 'AdminType']], func
     Route::post('/artikel/post', 'InternalAdmin\ArtikelController@store')->name('admin.artikel.store');
     Route::put('/artikel/update/{slug}', 'InternalAdmin\ArtikelController@update')->name('admin.artikel.update');
     Route::get('/artikel/edit/{slug}', 'InternalAdmin\ArtikelController@edit')->name('admin.artikel.edit');
+    Route::get('/visitor/{slug}', 'InternalAdmin\ArtikelController@getVisitor')->name('admin.artikel.visitor');
 
     Route::delete('/artikel/delete/{id}', 'InternalAdmin\ArtikelController@destroy')->name('admin.artikel.delete');
 

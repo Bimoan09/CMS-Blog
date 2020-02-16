@@ -92,6 +92,9 @@ class ArtikelController extends Controller
         return view('artikel::Internaladmin.createArticle', $data);
     }
 
+
+   
+
     /**
      * Update the specified resource in storage.
      * @param Request $request
@@ -114,5 +117,11 @@ class ArtikelController extends Controller
     {
         $data['deleteArticle'] = $this->repo->deleteArticle($request);
         return back()->with('failed', 'Article berhasil dihapus');
+    }
+
+    public function getVisitor($slug)
+    {
+        $visitors = $this->repo->visitorArticleViews($slug);
+        return $visitors;
     }
 }

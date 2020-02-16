@@ -21,6 +21,7 @@ use Carbon\Carbon;
 use Image;
 use File;
 use Str;
+use Queue;
 
 class ArtikelRepository implements ArticleCoreRepository
 {
@@ -263,6 +264,13 @@ class ArtikelRepository implements ArticleCoreRepository
         $find = $this->article->where('slug', $slug)->first();
         $find->status = 1;
         $find->save();
+    }
+
+    public function visitorArticleViews($slug)
+    {
+        $find = $this->article->where('slug', $slug)->increment('view_count', 1);
+        return $find;
+       
     }
 
 
