@@ -96,4 +96,6 @@ class CategoryController extends Controller
        $data['deleteAjax'] =  $this->repo->deleteCategory($request);
        return back()->with('failed', 'Kategori berhasil dihapus');
     }
+
+    
 }

@@ -22,6 +22,7 @@
         </head>
 
 
+        @include('frontend::layouts.header')
 
         <body>
             @yield('content')

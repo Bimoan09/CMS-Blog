@@ -15,5 +15,6 @@
 //     Route::get('/', 'FrontendController@index');
 // });
 
-Route::get('/', 'FrontendController@index');
+Route::get('/', 'FrontendController@index')->middleware('cors');
+Route::get('/{slug}', 'FrontendController@getArticleAppendCategory')->middleware('cors')->name('frontend.getAppendArticle');
 

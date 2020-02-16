@@ -72,5 +72,18 @@ class CategoryRepository implements CategoryCoreRepositories
         $findCategory->update();
     }
 
+    public function detailCategoryFrontend($slug)
+    {
+        $detail = $this->category->where('slug', $slug)->first();
+        return $detail;
+    }
+
+    // public function bindingData($slug)
+    // {
+    //     $data['getCategory'] = $this->repo->detailCategoryFrontend($slug);
+    //     $data['getRelatedArticle'] = $data['getCategory']->articles;
+    //     return view('frontend::Timeline.beranda', $data);
+    // }
+
 
 }
