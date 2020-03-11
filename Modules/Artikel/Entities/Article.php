@@ -23,4 +23,11 @@ class Article extends Model
     {
         return $this->belongsToMany(Tags::class, 'article_tag')->withTimestamps();
     }
+
+    public function getFeaturedImageAttribute($value)
+    {
+        if ($value) {
+            return asset('storage/' . $value);
+        }
+    }
 }

@@ -43,7 +43,7 @@
                         <center>
                             <h4>{{$detail->tittle}}</h4>
 
-                            <img src="{{asset('storage/' . $detail->featured_image)}}" width="640px" height="360px" />
+                            <img src="{{ $detail->featured_image }}" width="640px" height="360px" />
                             <br>
                             <br>
                             <p>{{$detail->featuredimage_description}}</p>
