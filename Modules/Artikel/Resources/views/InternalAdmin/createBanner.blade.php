@@ -13,13 +13,13 @@
                 <h3 class="panel-title">Buat Banner</h3>
             </div>
             <div class="panel-body">
-            <form action="{{$mode=='create' ?route('admin.banner.store') : route('admin.banner.update', $findBanner->id)}}" method="POST" class="form-horizontal" id="exampleSummaryForm" autocomplete="off" enctype="multipart/form-data">
+            <form action="{{$mode ?? ''=='create' ?route('admin.banner.store') : route('admin.banner.update', $findBanner ?? ''->id)}}" method="POST" class="form-horizontal" id="exampleSummaryForm" autocomplete="off" enctype="multipart/form-data">
                 {{ csrf_field() }}
-                {{ $mode=='edit'? method_field('PUT'):'' }}
+                {{ $mode ?? ''=='edit'? method_field('PUT'):'' }}
                     <div class="form-group row">
                         <label class="col-md-3 form-control-label">Nama</label>
                         <div class="col-md-9">
-                            <input type="text" class="form-control" name="name" value="{{$findBanner ? $findBanner->name : old('name')}}" required />
+                            <input type="text" class="form-control" name="name" value="{{$findBanner ?? '' ? $findBanner ?? ''->name : old('name')}}" required />
                         </div>
                     </div>
                     <!-- Example Default -->
@@ -35,7 +35,7 @@
                     <div class="form-group row">
                         <label class="col-md-3 form-control-label">Deskripsi Banner</label>
                         <div class="col-md-9">
-                            <textarea class="form-control" name="description" rows="5" cols="5">{{$findBanner ? $findBanner->description : old('description')}}"</textarea>
+                            <textarea class="form-control" name="description" rows="5" cols="5">{{$findBanner ?? '' ? $findBanner ?? ''->description : old('description')}}"</textarea>
                         </div>
                     </div>
 

@@ -10,6 +10,7 @@ use Modules\Artikel\Repositories\CategoryRepository;
 use Modules\Artikel\Repositories\TagsRepository;
 use Modules\Artikel\Entities\Article;
 use Modules\Artikel\Entities\Category;
+use Yajra\Datatables\Datatables;
 use Str;
 
 class ArtikelController extends Controller
@@ -27,14 +28,31 @@ class ArtikelController extends Controller
     }
 
 
+    public function index()
+    {
+        return view('artikel::Internaladmin.indexArticle');
+    } 
+
     /**
      * Display a listing of the resource.
      * @return Response
      */
-    public function index()
+    public function jsonArticle()
     {
-        $data['articleAdmin'] = $this->repo->getArticleAdmin();
-        return view('artikel::Internaladmin.indexArticle', $data);
+        $articleAdmin = $this->repo->getArticleMember();
+        return Datatables::of($articleAdmin)
+        ->addColumn('action', function ($user) {
+            return '<a href="/admin/artikel/edit/'.$user->slug.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+        })
+
+        ->editColumn('status', function ($inquiry) {
+            if ($inquiry->status == 0) return 'Pending';
+            if ($inquiry->status == 1) return 'Accept';
+            if ($inquiry->status == 2) return 'Reject';
+            return 'Cancel';
+        })
+        ->make(true);
+      
     }
 
     public function indexArticleMember()
@@ -93,7 +111,7 @@ class ArtikelController extends Controller
     }
 
 
-   
+
 
     /**
      * Update the specified resource in storage.
@@ -104,7 +122,7 @@ class ArtikelController extends Controller
     public function update(Request $request, $slug)
     {
         $updateData = $this->repo->updateArticle($request,$slug);
-  
+
         return redirect()->route('admin.artikel.index')->with('success', 'Artikel berhasil diupdate');
     }
 

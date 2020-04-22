@@ -13,7 +13,7 @@ namespace Modules\Artikel\Repositories;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Artikel\Entities\Article;
-use Modules\Admin\Entities\User;
+use Modules\Account\Entities\User;
 use Modules\Artikel\Repositories\Core\ArticleCoreRepository;
 use Modules\Artikel\Repositories\CategoryRepository;
 use Modules\Artikel\Repositories\TagsRepository;
@@ -34,13 +34,8 @@ class ArtikelRepository implements ArticleCoreRepository
         $this->article = $article;
         $this->category = $category;
         $this->tags = $tags;
-        
 
-        //image path
-        // $this->path = public_path('/images');
-        //image dimension
-       
-        
+
     }
 
     // Get all instances of model
@@ -69,10 +64,10 @@ class ArtikelRepository implements ArticleCoreRepository
         //     'featuredimage_description' => 'Deskipsi ini Gambar harus diisi',
         //     'content.required'  => 'Konten tidak boleh kosong',
         //  ]);
-     
+
         // Image upload Process
         $reqImage = $request->file('featured_image');
-        
+
         $fileName = Carbon::now()->timestamp. '-' . uniqid() . '.' . $reqImage->getClientOriginalName();
         Image::make($reqImage)->resize(640,360)->save(storage_path('app/public/' . '/' . $fileName));
 
@@ -119,7 +114,7 @@ class ArtikelRepository implements ArticleCoreRepository
          $reqImage = $request->file('featured_image');
          $fileName = Carbon::now()->timestamp. '-' . uniqid() . '.' . $reqImage->getClientOriginalName();
          Image::make($reqImage)->resize(640,360)->save(storage_path('app/public/' . '/' . $fileName));
- 
+
          $storeData = $this->article->create([
              'tittle'                    => $request->tittle,
              'slug'                      => Str::slug($request->tittle),
@@ -137,7 +132,7 @@ class ArtikelRepository implements ArticleCoreRepository
 
           $storeData->tags()->sync((array)$request->input('tags'));
      }
-    
+
 
     public function getCategory(CategoryRepository $category)
     {
@@ -159,7 +154,7 @@ class ArtikelRepository implements ArticleCoreRepository
     public function getArticleMember()
     {
 
-        $getArticle = $this->article->where('article_owner', 'member')->with('users')->get();
+        $getArticle = $this->article->where('article_owner', 'member')->with('category')->get();
         return $getArticle;
     }
 
@@ -167,7 +162,7 @@ class ArtikelRepository implements ArticleCoreRepository
     {
         $test = $this->article->where('slug', $slug)->first();
       return $test;
-       
+
     }
 
     public function deleteArticle($request)
@@ -198,7 +193,7 @@ class ArtikelRepository implements ArticleCoreRepository
 
         $find = $this->article->where('slug', $slug)->first();
         $image = $request->file('featured_image');
-        
+
         $fileName = Carbon::now()->timestamp. '-' . uniqid() . '.' . $image->getClientOriginalName();
         Image::make($image)->resize(640,360)->save(storage_path('app/public/' . '/' . $fileName));
         $find->featured_image = $fileName;
@@ -214,7 +209,7 @@ class ArtikelRepository implements ArticleCoreRepository
         $find->article_owner = 'internaladmin';
         $find->save();
 
-      
+
     }
 
     public function updateArticleMember($request,$slug)
@@ -240,7 +235,7 @@ class ArtikelRepository implements ArticleCoreRepository
 
         $find = $this->article->where('slug', $slug)->first();
         $image = $request->file('featured_image');
-        
+
         $fileName = Carbon::now()->timestamp. '-' . uniqid() . '.' . $image->getClientOriginalName();
         Image::make($image)->resize(640,360)->save(storage_path('app/public/' . '/' . $fileName));
         $find->featured_image = $fileName;
@@ -255,8 +250,8 @@ class ArtikelRepository implements ArticleCoreRepository
         $find->user_id = auth()->user()->id;
         $find->article_owner = 'member';
         $find->save();
-    
-      
+
+
     }
 
     public function approvedArticle($request,$slug)
@@ -270,7 +265,7 @@ class ArtikelRepository implements ArticleCoreRepository
     {
         $find = $this->article->where('slug', $slug)->increment('view_count', 1);
         return $find;
-       
+
     }
 
 
@@ -279,12 +274,12 @@ class ArtikelRepository implements ArticleCoreRepository
     // {
     //     $image = $request->file('image');
     //     $desc = $request->description;
-      
+
 
     //     foreach($image as $value){
     //         $name = $value->getClientOriginalName();
     //         $path = $value->move(public_path(). '/image', $name);
-          
+
     //     }
 
     //     Image::create([
@@ -295,7 +290,7 @@ class ArtikelRepository implements ArticleCoreRepository
     //     return back();
     // }
 
-   
-    
+
+
 
 }

@@ -12,14 +12,14 @@
 */
 
 
-Auth::routes();
+
 
 Route::prefix('account')->group(function() {
-    Route::get('/login', 'AccountController@getLogin')->name('get.login');
-    Route::get('/register', 'AccountController@getRegister')->name('get.register');
-    Route::post('/login', 'AccountController@postLogin')->name('post.login');
-    Route::post('/register', 'AccountController@postRegister')->name('post.register');
-    Route::get('/logout', 'AccountController@logout')->name('post.logout');
+    Route::get('/login', 'Auth\LoginController@getLogin')->name('get.login');
+    Route::get('/register', 'Auth\LoginController@getRegister')->name('get.register');
+    Route::post('/login', 'Auth\LoginController@postLogin')->name('post.login');
+    Route::post('/register', 'Auth\LoginController@postRegister')->name('post.register');
+    Route::get('/logout', 'Auth\LoginController@logout')->name('post.logout');
 });
 
 

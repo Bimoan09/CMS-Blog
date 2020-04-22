@@ -50,26 +50,9 @@
             <link rel="stylesheet" href="{{asset('assets/remark/assets/examples/css/uikit/modals.css')}}">
             <!-- End Remark template -->
 
+            <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
 
-            <!--Datatables -->
-            <link rel="stylesheet"
-                href="{{asset('assets/remark/global/vendor/datatables.net-bs4/dataTables.bootstrap4.css')}}">
-            <link rel="stylesheet"
-                href="{{asset('assets/remark/global/vendor/datatables.net-fixedheader-bs4/dataTables.fixedheader.bootstrap4.css')}}">
-            <link rel="stylesheet"
-                href="{{asset('assets/remark/global/vendor/datatables.net-fixedcolumns-bs4/dataTables.fixedcolumns.bootstrap4.css')}}">
-            <link rel="stylesheet"
-                href="{{asset('assets/remark/global/vendor/datatables.net-rowgroup-bs4/dataTables.rowgroup.bootstrap4.css')}}">
-            <link rel="stylesheet"
-                href="{{asset('assets/remark/global/vendor/datatables.net-scroller-bs4/dataTables.scroller.bootstrap4.css')}}">
-            <link rel="stylesheet"
-                href="{{asset('assets/remark/global/vendor/datatables.net-select-bs4/dataTables.select.bootstrap4.css')}}">
-            <link rel="stylesheet"
-                href="{{asset('assets/remark/global/vendor/datatables.net-responsive-bs4/dataTables.responsive.bootstrap4.css')}}">
-            <link rel="stylesheet"
-                href="{{asset('assets/remark/global/vendor/datatables.net-buttons-bs4/dataTables.buttons.bootstrap4.css')}}">
-            <link rel="stylesheet" href="{{asset('assets/remark/assets/examples/css/tables/datatable.css')}}">
-            <!-- End Datatables -->
+
             <script src="{{asset('assets/remark/global/vendor/breakpoints/breakpoints.js')}}"></script>
             <script>
                 Breakpoints();
@@ -88,8 +71,7 @@
 
 
         @yield('javascript')
-
-         <script src="{{asset('assets/remark/global/vendor/jquery/jquery.js')}}"></script> 
+        <script src="{{asset('assets/remark/global/vendor/jquery/jquery.js')}}"></script> 
         <script src="{{asset('assets/remark/global/vendor/babel-external-helpers/babel-external-helpers.js')}}">
         </script>
 
@@ -124,27 +106,7 @@
         <script src="{{asset('assets/remark/global/vendor/waves/waves.js')}}"></script>
   
         
-        <!-- Datatables -->
-        <script src="{{asset('assets/remark/global/vendor/datatables.net/jquery.dataTables.js')}}"></script>
-        <script src="{{asset('assets/remark/global/vendor/datatables.net-bs4/dataTables.bootstrap4.js')}}"></script>
-
-            <script src = "{{asset('assets/remark/global/js/Plugin/datatables.js')}}" >
-        </script>
-        <script src="{{asset('assets/remark/assets/examples/js/tables/datatable.js')}}"></script>
-      
-        <!-- End Datatables -->
-
-
-
-
-
-        {{-- <script type="text/javascript" src="{{asset('/js/ckfinder/ckfinder.js')}}"></script>
-        <script>
-            CKFinder.config({
-                connectorPath: '/ckfinder/connector'
-            });
-        </script> --}}
-        @yield('script')
+        <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 
 
 

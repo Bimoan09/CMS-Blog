@@ -30,6 +30,7 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function() {
 Route::group(['prefix' => 'admin' , 'middleware' => ['auth', 'AdminType']], function() {
 
     // artikel
+    Route::get('/artikel/lists', 'InternalAdmin\ArtikelController@jsonArticle')->name('admin.artikel.json');
     Route::get('/artikel/list', 'InternalAdmin\ArtikelController@index')->name('admin.artikel.index');
     Route::get('/artikel/member/list', 'InternalAdmin\ArtikelController@indexArticleMember')->name('admin.artikel.indexMember');
     Route::get('/artikel/create', 'InternalAdmin\ArtikelController@create')->name('admin.artikel.create');

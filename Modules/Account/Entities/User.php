@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Admin\Entities;
+namespace Modules\Account\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,5 +18,10 @@ class User extends Model
     public function profile()
     {
         return $this->hasOne(Profile::class);
+    }
+
+    public function role()
+    {
+        return $this->belongsToMany(Role::class, 'user_roles', 'role_id', 'user_id');
     }
 }

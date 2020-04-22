@@ -97,5 +97,5 @@ class CategoryController extends Controller
        return back()->with('failed', 'Kategori berhasil dihapus');
     }
 
-    
+
 }

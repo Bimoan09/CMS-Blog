@@ -10,12 +10,12 @@
             <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
             <meta name="description" content="bootstrap material admin template">
             <meta name="author" content="">
-            
+
             <title>@yield('title', 'Login')</title>
-            
+
             <link rel="apple-touch-icon" href="{{asset('assets/remark/assets/images/apple-touch-icon.png')}}">
             <link rel="shortcut icon" href="{{asset('assets/remark/assets/images/favicon.ico')}}">
-            
+
 
             <!-- Google fonts -->
             <link rel="stylesheet"
@@ -33,8 +33,8 @@
                 id="css-ionicons" type="text/css" />
             <link href="{{asset('assets/remark/assets/examples/css/dashboard/v1.css')}}" rel="stylesheet"
                 id="css-ionicons" type="text/css" />
-            <link href="{{asset('assets/remark/global/fonts/material-design/material-design.min.css')}}"
-                rel="stylesheet" id="css-ionicons" type="text/css" />
+{{--            <link href="{{asset('assets/remark/global/fonts/material-design/material-design.min.css')}}"--}}
+{{--                rel="stylesheet" id="css-ionicons" type="text/css" />--}}
             <link href="{{asset('assets/remark/global/fonts/brand-icons/brand-icons.min.css')}}" rel="stylesheet"
                 id="css-ionicons" type="text/css" />
             <link rel="apple-touch-icon" href="{{asset('assets/images/apple-touch-icon.png')}}">

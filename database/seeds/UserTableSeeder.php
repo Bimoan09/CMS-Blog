@@ -12,8 +12,7 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        // $faker = Faker::create();
-     
+
             DB::table('users')->insert([
                 'name' => 'bian',
                 'email' => 'bian@gmail.com',
@@ -23,7 +22,7 @@ class UserTableSeeder extends Seeder
                 'token' => 'qwerty',
             ]);
 
-            
+
             DB::table('users')->insert([
                 'name' => 'astri',
                 'email' => 'astri@gmail.com',
@@ -32,6 +31,6 @@ class UserTableSeeder extends Seeder
                 'user_type' => 'internaladmin',
                 'token' => 'qwerty',
             ]);
-        
+
     }
 }

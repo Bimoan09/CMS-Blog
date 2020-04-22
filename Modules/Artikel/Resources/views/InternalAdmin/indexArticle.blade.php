@@ -32,7 +32,7 @@
                     <h3 class="panel-title">Daftar Artikel</h3>
                 </header>
                 <div class="panel-body">
-                    <table class="table table-hover dataTable table-striped w-full" id="exampleTableSearch">
+                    <table id="article-table" class="table table-hover dataTable table-striped w-full" id="exampleTableSearch">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -45,58 +45,6 @@
                                 <th>Aksi</th>
                             </tr>
                         </thead>
-                        <tfoot>
-
-                            <tr>
-                                <th>No</th>
-                                <th>Judul</th>
-                                <th>Kategori</th>
-                                {{-- <th>Tags</th> --}}
-                                <th>Jumlah Pembaca</th>
-                                <th>Penulis</th>
-                                <th>Status</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </tfoot>
-                        <tbody>
-                            @foreach($articleAdmin as $value)
-                            <tr>
-                                <td>{{$loop->iteration}}</td>
-                                <td>{{$value->tittle}}</td>
-                                <td>{{$value->category->name}}</td>
-
-                                <td>26</td>
-                                <td><a href="http://example.com">{{$value->users->name}}</a>
-                                </td>
-                                <td>
-                                    @if($value->status == 1)
-                                    <span class="badge badge-success">Terbit</span>
-                                    @elseif($value->status == 2)
-                                    <span class="badge badge-warning">Pending</span>
-                                    @elseif($value->status == 3)
-                                    <span class="badge badge-danger">Reject</span>
-                                    @endif
-                                </td>
-                                <td> <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
-                                        data-toggle="tooltip" data-original-title="Rincian">
-                                        <a href="{{route('admin.artikel.detail', Str::slug($value->tittle))}}" <i
-                                            class="icon md-book" aria-hidden="true"></i></a>
-                                    </button>
-                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-default"
-                                        data-toggle="tooltip" data-original-title="Ubah">
-                                        <a href="{{route('admin.artikel.edit', $value->slug)}}" <i class="icon md-wrench"
-                                            aria-hidden="true"></i></a>
-                                    </button>
-                                    <a href="javascript:;" data-toggle="modal" onclick="deleteData({{$value->id}})"
-                                        data-target="#DeleteModal" class="btn btn-xs btn-danger"><i
-                                            class="fa fa-trash"></i>Hapus</a>
-                                </td>
-                            </tr>
-                            @endforeach
-
-
-
-                        </tbody>
                     </table>
                 </div>
             </div>
@@ -111,7 +59,24 @@
 
 @section('javascript')
 <script src="{{asset('assets/remark/global/vendor/jquery/jquery.js')}}"></script>
+<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 <script>
+
+$('#article-table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: '{{route('admin.artikel.json')}}',
+        columns: [
+            {data: 'id', name: 'id'},
+            {data: 'tittle', name: 'tittle'},
+            {data: 'category.name', name: 'category.name'},
+            {data: 'view_count', name: 'view_count'},
+            {data: 'article_owner', name: 'article_owner'},
+            {data: 'status', name: 'status'},
+            {data: 'action', name: 'action', orderable: false, searchable: false}
+        ]
+    });
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': '{{ csrf_token() }}'

@@ -34,20 +34,20 @@ class FrontendController extends Controller
         return view('frontend::Timeline.beranda', $data);
     }
 
-    
+
      public function getArticleAppendCategory($slug)
      {
          $data['getCategory'] = $this->repo->detailCategoryFrontend($slug);
          $data['getRelatedArticle'] = $data['getCategory']->articles;
          return view('frontend::Timeline.articleList', $data);
      }
-    
+
 
     /**
      * Show the form for creating a new resource.
      * @return Response
      */
-    
+
     public function create()
     {
         return view('frontend::create');

@@ -1,13 +1,14 @@
 <?php
 
-namespace Modules\Account\Http\Controllers;
+namespace Modules\Account\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-use App\User;
+use Modules\Account\Entities\User;
+use Auth;
 
-class AccountController extends Controller
+class LoginController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,8 @@ class AccountController extends Controller
      */
     public function getLogin()
     {
-        $AuthenticatedUser = \Auth::user();
-        if($AuthenticatedUser){
+        $UnAuthenticatedUser = \Auth::user();
+        if($UnAuthenticatedUser){
             return back();
         }
         return view('account::login');
@@ -67,7 +68,7 @@ class AccountController extends Controller
             'email' => 'email',
             'password' => 'required|confirmed|min:6',
         ]);
-        
+
         $unique_username = uniqid();
         $create = User::create([
         'name' => $request->name,

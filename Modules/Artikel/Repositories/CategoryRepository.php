@@ -3,15 +3,6 @@
 
 namespace Modules\Artikel\Repositories;
 
-
-
-/**
-    * created By    : Bimo Anugrah Prasetyo
-    * @filename     : CategoryRepositories
-    * @lastModified : 22-01-2020, 15:05
- */
-
-
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Artikel\Entities\Category;
@@ -35,7 +26,7 @@ class CategoryRepository implements CategoryCoreRepositories
     {
         return $this->category->withCount('articles')->get();
     }
-    
+
     public function storeCategory($request)
     {
         return $this->category->create([
@@ -45,20 +36,20 @@ class CategoryRepository implements CategoryCoreRepositories
             'meta_tag_description'  => $request->meta_tag_description,
             'user_id'               => auth()->user()->id,
         ]);
-        
+
     }
 
     public function deleteCategory($request)
     {
         $delete = $this->category->find($request->id)->delete();
         return $delete;
-       
+
     }
 
     public function detailCategory($id)
     {
         $details = $this->category->where('id', $id)->first();
-     
+
         return $details;
     }
 
