@@ -30,7 +30,7 @@ public function getArticleMember();
 
 public function findArticle($slug);
 
-public function deleteArticle($request);
+public function deleteArticle($id);
 
 public function updateArticleAdmin($request,$slug);
 

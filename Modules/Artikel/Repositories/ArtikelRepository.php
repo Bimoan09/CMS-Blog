@@ -165,9 +165,9 @@ class ArtikelRepository implements ArticleCoreRepository
 
     }
 
-    public function deleteArticle($request)
+    public function deleteArticle($id)
     {
-        return $this->article->find($request->id)->delete();
+        return $this->article->find($id)->delete();
     }
 
     public function updateArticleAdmin($request,$slug)

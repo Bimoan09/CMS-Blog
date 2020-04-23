@@ -19,7 +19,7 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function() {
     Route::get('/artikel/detail/1', 'Member\ArtikelController@show')->name('member.artikel.show');
     Route::get('/artikel/edit/1', 'Member\ArtikelController@edit')->name('member.artikel.edit');
     Route::post('/artikel/post', 'Member\ArtikelController@store')->name('member.artikel.store');
-    
+
     Route::get('/artikel/image', 'Member\ArtikelController@getImage');
     Route::get('/data/cache', 'Member\ArtikelController@getCache');
 
@@ -30,7 +30,7 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function() {
 Route::group(['prefix' => 'admin' , 'middleware' => ['auth', 'AdminType']], function() {
 
     // artikel
-    Route::get('/artikel/lists', 'InternalAdmin\ArtikelController@jsonArticle')->name('admin.artikel.json');
+    Route::get('/artikel/json', 'InternalAdmin\ArtikelController@jsonArticle')->name('admin.artikel.json');
     Route::get('/artikel/list', 'InternalAdmin\ArtikelController@index')->name('admin.artikel.index');
     Route::get('/artikel/member/list', 'InternalAdmin\ArtikelController@indexArticleMember')->name('admin.artikel.indexMember');
     Route::get('/artikel/create', 'InternalAdmin\ArtikelController@create')->name('admin.artikel.create');
@@ -40,7 +40,7 @@ Route::group(['prefix' => 'admin' , 'middleware' => ['auth', 'AdminType']], func
     Route::get('/artikel/edit/{slug}', 'InternalAdmin\ArtikelController@edit')->name('admin.artikel.edit');
     Route::get('/visitor/{slug}', 'InternalAdmin\ArtikelController@getVisitor')->name('admin.artikel.visitor');
 
-    Route::delete('/artikel/delete/{id}', 'InternalAdmin\ArtikelController@destroy')->name('admin.artikel.delete');
+    Route::get('/artikel/delete/{id}', 'InternalAdmin\ArtikelController@destroy')->name('admin.artikel.delete');
 
     //kategori
     Route::get('/kategori/create', 'InternalAdmin\CategoryController@create')->name('admin.category.create');
@@ -59,9 +59,9 @@ Route::group(['prefix' => 'admin' , 'middleware' => ['auth', 'AdminType']], func
     Route::get('/banner/{id}', 'InternalAdmin\BannerController@edit')->name('admin.banner.edit');
     Route::put('/banner/update/{id}', 'InternalAdmin\BannerController@update')->name('admin.banner.update');
 
-    //tags 
+    //tags
     Route::get('/tags/list', 'InternalAdmin\TagsController@index')->name('admin.tags.index');
     Route::delete('/tags/delete/{id}', 'InternalAdmin\TagsController@destroy')->name('admin.tags.delete');
-  
+
 
 });

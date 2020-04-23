@@ -32,7 +32,7 @@
                     <h3 class="panel-title">Daftar Artikel</h3>
                 </header>
                 <div class="panel-body">
-                    <table id="article-table" class="table table-hover dataTable table-striped w-full" id="exampleTableSearch">
+                    <table class="table table-bordered datatable">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -50,6 +50,28 @@
             </div>
             <!-- End Panel Table Individual column searching -->
 
+            <!-- Delete Product Modal -->
+            <div class="modal" id="DeleteArticleModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Article Delete</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <h4>Are you sure want to delete this Article?</h4>
+                        </div>
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" id="SubmitDeleteArticleForm">Yes</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
     <!-- End Page -->
@@ -62,9 +84,15 @@
 <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 <script>
 
-$('#article-table').DataTable({
+$(document).ready(function() {
+    // init datatable.
+    var dataTable = $('.datatable').DataTable({
         processing: true,
         serverSide: true,
+        autoWidth: true,
+        pageLength: 5,
+        // scrollX: true,
+        "order": [[ 0, "desc" ]],
         ajax: '{{route('admin.artikel.json')}}',
         columns: [
             {data: 'id', name: 'id'},
@@ -77,21 +105,30 @@ $('#article-table').DataTable({
         ]
     });
 
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-        }
+
+    var deleteID;
+    var $button = $(this);
+
+        $('body').on('click', '#getDeleteId', function(){
+        deleteID = $(this).data('id');
+    })
+
+    $('#SubmitDeleteArticleForm').click(function(e) {
+        e.preventDefault();
+        var id = deleteID;
+
+    $.ajax({
+        url: "/admin/artikel/delete/" + id,
+        method: 'GET',
+        data : {"_token":"{{ csrf_token() }}"},
+        success: function(result)
+        {
+            dataTable.row( $button.parents('tr') ).remove().draw();
+            $('#DeleteArticleModal').modal('hide');
+        },
     });
+});
 
-    function deleteData(id) {
-        var id = id;
-        var url = '{{ route("admin.artikel.delete", ":id") }}';
-        url = url.replace(':id', id);
-        $("#deleteForm").attr('action', url);
-    }
-
-    function formSubmit() {
-        $("#deleteForm").submit();
-    }
+});
 </script>
 @endsection

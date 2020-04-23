@@ -31,7 +31,7 @@ class ArtikelController extends Controller
     public function index()
     {
         return view('artikel::Internaladmin.indexArticle');
-    } 
+    }
 
     /**
      * Display a listing of the resource.
@@ -42,8 +42,12 @@ class ArtikelController extends Controller
         $articleAdmin = $this->repo->getArticleMember();
         return Datatables::of($articleAdmin)
         ->addColumn('action', function ($user) {
-            return '<a href="/admin/artikel/edit/'.$user->slug.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>';
+
+            return '<a href="'.route('admin.artikel.edit', $user->slug).'" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+                    <button type="button" data-id="'.$user->id.'" data-toggle="modal" data-target="#DeleteArticleModal" class="btn btn-danger btn-sm" id="getDeleteId">Delete</button>';
+
         })
+            ->rawColumns(['action'])
 
         ->editColumn('status', function ($inquiry) {
             if ($inquiry->status == 0) return 'Pending';
@@ -52,7 +56,7 @@ class ArtikelController extends Controller
             return 'Cancel';
         })
         ->make(true);
-      
+
     }
 
     public function indexArticleMember()
@@ -131,9 +135,9 @@ class ArtikelController extends Controller
      * @param int $id
      * @return Response
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $data['deleteArticle'] = $this->repo->deleteArticle($request);
+        $data['deleteArticle'] = $this->repo->deleteArticle($id);
         return back()->with('failed', 'Article berhasil dihapus');
     }
 
